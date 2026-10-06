@@ -1,0 +1,78 @@
+/* ==========================================================================
+   GREENBEES STUDIO — DESIGN TOKENS
+   Deep Emerald Forest (#1A472E) Palette & Glass Navigation
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. COLOR PALETTE (Page Canvas = #1A472E)
+     ------------------------------------------------------------------------ */
+  --page-bg: #1A472E;          /* Requested whole page background */
+  --forest-dark: #0A1E13;      /* Deepest tone for cards & overlays */
+  --forest-deep: #0F2E1D;      /* Deep card surface */
+  --forest-mid: #1A472E;       /* Base brand canvas */
+  --forest-surface: #205537;   /* Elevated forest card tone */
+  --forest-elevated: #286442;  /* Lighter surface hover */
+  
+  --paper-light: #FBF8F2;      /* Primary text on dark green */
+  --paper-base: #1A472E;       /* Canvas background */
+  --paper-muted: rgba(255, 255, 255, 0.12); /* Subtle borders */
+  --paper-stone: rgba(255, 255, 255, 0.22); /* Inactive guides */
+  --paper-warm: rgba(255, 255, 255, 0.08);  /* Translucent chip background */
+
+  --text-main: #FBF8F2;        /* High-contrast warm cream text */
+  --text-muted: #CAD7CE;       /* Soft readable secondary sage text */
+  --text-faint: #91A89A;       /* Metadata & tertiary text */
+
+  --moss-accent: #A9C942;      /* Living chartreuse moss */
+  --moss-glow: #BFE353;        /* Micro hover highlights */
+  --moss-dark: #829D2C;
+
+  /* Glassmorphism Tokens */
+  --glass-bg: rgba(12, 36, 23, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-blur: blur(18px);
+  --glass-shadow: 0 16px 38px rgba(0, 0, 0, 0.3);
+
+  /* ------------------------------------------------------------------------
+     2. TYPOGRAPHY
+     ------------------------------------------------------------------------ */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+
+  /* Fluid type scale */
+  --text-display: clamp(2.6rem, 4.4vw, 4.2rem);
+  --text-h1: clamp(2.1rem, 3.6vw, 3.2rem);
+  --text-h2: clamp(1.6rem, 2.6vw, 2.3rem);
+  --text-h3: clamp(1.15rem, 1.7vw, 1.5rem);
+  --text-lead: clamp(1.05rem, 1.25vw, 1.25rem);
+  --text-body: clamp(0.95rem, 1vw, 1.05rem);
+  --text-caption: clamp(0.75rem, 0.85vw, 0.85rem);
+  --text-micro: 0.7rem;
+
+  /* Spacing */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 3.5rem;
+  --space-2xl: 5.5rem;
+  --space-3xl: 8rem;
+
+  /* Shape Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-pill: 9999px;
+
+  --stem-rail-width: 76px;
+  --header-height: 80px;
+
+  --ease-warm: cubic-bezier(0.25, 1, 0.35, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+}

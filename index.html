@@ -1,0 +1,2518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Greenbees — Corporate Plantscaping &amp; Living Green Walls | Bangalore</title>
+  <meta name="description" content="Bangalore's transparent office plantscaping studio. Fixed-price corporate greenery, vertical living walls, and guaranteed weekly plant care. Trusted by Volvo, Nokia, Biocon, Hilton.">
+  
+  <!-- Favicon / Logo -->
+  <link rel="icon" type="image/png" href="./assets/images/logo.png">
+
+  <!-- Google Font: Plus Jakarta Sans (Superhealth Modern Clean Typography) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       GREENBEES — SUPERHEALTH-INSPIRED DESIGN SYSTEM
+       Palette directly from Logo:
+       - Brand Green: #769821
+       - Brand Green Dark: #5B7819
+       - Brand Green Light: #E8EFCF
+       - Charcoal Black: #22231F
+       - Canvas Cream: #FAF8F4
+       - Card White: #FFFFFF
+       - Border: #EAE6DC
+       ========================================================================== */
+
+    :root {
+      --primary: #6B8B21;
+      --primary-dark: #526B18;
+      --primary-light: #EBF2D6;
+      --primary-accent: #7A9E24;
+      
+      --charcoal: #22231F;
+      --charcoal-soft: #383A34;
+      --text-muted: #666A60;
+      --text-faint: #8E9487;
+      
+      --bg-canvas: #FAF8F4;
+      --bg-card: #FFFFFF;
+      --border-subtle: #EAE6DC;
+      --border-card: #E4DFD3;
+      
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-pill: 9999px;
+      
+      --shadow-sm: 0 2px 8px rgba(34, 35, 31, 0.04);
+      --shadow-card: 0 10px 30px rgba(34, 35, 31, 0.06);
+      --shadow-hover: 0 16px 40px rgba(34, 35, 31, 0.1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-canvas);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ==========================================================================
+       1. FLOATING GLASS PILL NAVBAR (Superhealth Signature)
+       ========================================================================== */
+    .nav-wrapper {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+      pointer-events: none;
+    }
+
+    .glass-nav {
+      pointer-events: auto;
+      width: 100%;
+      max-width: 1140px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 14px 8px 20px;
+      background: rgba(16, 22, 17, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-pill);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: all 0.35s ease;
+    }
+
+    .glass-nav.nav-scrolled {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(228, 223, 211, 0.85);
+      box-shadow: 0 10px 30px rgba(34, 35, 31, 0.07);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #FFFFFF;
+      transition: color 0.3s ease;
+    }
+
+    .glass-nav.nav-scrolled .nav-brand {
+      color: var(--charcoal);
+    }
+
+    .nav-logo-img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-brand-text {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      transition: color 0.3s ease;
+    }
+
+    .nav-brand-text span {
+      color: #8FB529;
+      transition: color 0.3s ease;
+    }
+
+    .glass-nav.nav-scrolled .nav-brand-text {
+      color: var(--charcoal);
+    }
+
+    .glass-nav.nav-scrolled .nav-brand-text span {
+      color: var(--primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #D5DDD2;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: #FFFFFF;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-nav.nav-scrolled .nav-link {
+      color: var(--charcoal-soft);
+    }
+
+    .glass-nav.nav-scrolled .nav-link:hover {
+      color: var(--charcoal);
+      background-color: var(--primary-light);
+    }
+
+    .nav-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-pill-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-pill-secondary:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #FFFFFF;
+    }
+
+    .glass-nav.nav-scrolled .btn-pill-secondary {
+      color: var(--charcoal);
+      background: transparent;
+      border: 1px solid var(--border-card);
+    }
+
+    .glass-nav.nav-scrolled .btn-pill-secondary:hover {
+      background: #FFFFFF;
+      border-color: var(--charcoal);
+    }
+
+    .btn-pill-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: #658620;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .btn-pill-primary:hover {
+      background: #526D18;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    /* ==========================================================================
+       2. FULLSCREEN DARK HERO SECTION (End-to-End Viewport)
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      width: 100vw;
+      max-width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 0 24px 0;
+      box-sizing: border-box;
+      background: 
+        linear-gradient(180deg, rgba(12, 18, 13, 0.92) 0%, rgba(12, 18, 13, 0.76) 42%, rgba(10, 15, 11, 0.97) 100%),
+        url('./assets/images/hero-biophilic.jpg') center/cover no-repeat;
+      overflow: hidden;
+      color: #FFFFFF;
+    }
+
+    .hero-container-fullscreen {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .hero-content-fullscreen {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 5.2vw, 4.4rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+      margin-bottom: 22px;
+    }
+
+    .hero-title .highlight-text {
+      color: #8FB529;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-desc {
+      font-size: 1.18rem;
+      line-height: 1.68;
+      color: #CAD2C5;
+      margin-bottom: 36px;
+      max-width: 680px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: #658620;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .hero-btn-main:hover {
+      background: #526D18;
+      transform: translateY(-2px);
+    }
+
+    .hero-btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .hero-btn-whatsapp:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .hero-btn-whatsapp svg {
+      width: 20px;
+      height: 20px;
+      fill: #8FB529;
+    }
+
+    /* Trust Stats Bar in Dark Hero */
+    .hero-trust-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .trust-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .trust-val span {
+      color: #8FB529;
+    }
+
+    .trust-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #8E998B;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Hero Visual Card (Matte Dark Frosted) */
+    .hero-visual-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-xl);
+      padding: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 420px;
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-visual-card:hover .hero-img-wrap img {
+      transform: scale(1.02);
+    }
+
+    /* Floating Chips (Zero-Glow Matte Style) */
+    .floating-chip {
+      position: absolute;
+      background: rgba(18, 25, 20, 0.88);
+      backdrop-filter: blur(14px);
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 10;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .chip-1 {
+      top: 24px;
+      left: 20px;
+    }
+
+    .chip-2 {
+      bottom: 24px;
+      right: 20px;
+    }
+
+    .chip-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(107, 139, 33, 0.25);
+      border: 1px solid rgba(122, 158, 36, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #CADFA0;
+      font-size: 0.95rem;
+    }
+
+
+
+    /* ==========================================================================
+       6. SPECIALIZED BOTANICAL FLORA (Semi-Circle Arc Carousel)
+       ========================================================================== */
+    /* ==========================================================================
+       6. SPECIALIZED BOTANICAL FLORA (Big Semi-Circle Arc with Floating Info)
+       ========================================================================== */
+    .plant-carousel-section {
+      padding: 104px 0 90px 0;
+      background: #FAF8F4;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .plant-carousel-section .section-header-center {
+      margin: 0 auto 44px;
+    }
+
+    .plant-carousel-section .section-tag {
+      margin-bottom: 12px;
+    }
+
+    .plant-carousel-section .section-heading {
+      margin-bottom: 16px;
+      font-size: clamp(2rem, 3.2vw, 2.6rem);
+    }
+
+    .plant-carousel-section .section-sub {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .plant-carousel-stage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0;
+      min-height: 460px;
+      position: relative;
+      width: 100%;
+    }
+
+    /* Big Center Semi-Circle Stage */
+    .plant-stage-center {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      height: 460px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .plant-arc-track {
+      display: none !important; /* Dotted semicircle invisible */
+    }
+
+    .plant-arc-elements {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .plant-orbit-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -210px;
+      margin-left: -170px;
+      width: 340px;
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.65s ease, filter 0.65s ease;
+      user-select: none;
+    }
+
+    .plant-orbit-item img {
+      max-width: 100%;
+      max-height: 380px;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.14));
+      transition: transform 0.4s ease;
+    }
+
+    .plant-orbit-item:hover img {
+      transform: translateY(-6px);
+    }
+
+    /* ==========================================================================
+       ENTERPRISE CLIENT SHOWCASE (Social Proof Section)
+       ========================================================================== */
+    .clients-showcase-section {
+      padding: 76px 0 84px 0;
+      background: #F8F6F1;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .client-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .client-logo-card {
+      background: #FFFFFF;
+      border: 1px solid #E6E2D8;
+      border-radius: 12px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      box-shadow: 0 2px 8px rgba(34, 35, 31, 0.03);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+      cursor: default;
+    }
+
+    .client-logo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(34, 35, 31, 0.08);
+      border-color: #D3CDC0;
+    }
+
+    .client-card-img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.62;
+      transition: opacity 0.22s ease;
+    }
+
+    .client-logo-card:hover .client-card-img {
+      opacity: 1;
+    }
+
+    .logo-volvo {
+      height: 20px;
+    }
+
+    .logo-nokia {
+      height: 20px;
+    }
+
+    .logo-wabtec {
+      height: 25px;
+    }
+
+    .logo-federal {
+      height: 30px;
+    }
+
+    .logo-biocon {
+      height: 27px;
+    }
+
+    .logo-hilton {
+      height: 44px;
+    }
+
+    @media (max-width: 1024px) {
+      .client-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .client-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .client-logo-card {
+        height: 72px;
+        padding: 10px 14px;
+      }
+    }
+
+    /* ==========================================================================
+       4. FOUR TRANSPARENCY PILLARS ("Why Greenbees" - Superhealth 4 Cards)
+       ========================================================================== */
+    .section-py {
+      padding: 90px 0;
+    }
+
+    .section-header-center {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 3.4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       4. METHODOLOGY & STANDARDS (Architectural Bento Showcase)
+       ========================================================================== */
+    .why-us-section {
+      padding: 116px 0 120px 0;
+      background: var(--bg-canvas);
+      position: relative;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: #FFFFFF;
+      border: 1px solid #E6E2D8;
+      border-radius: 20px;
+      padding: 34px 32px;
+      box-shadow: 0 4px 16px rgba(34, 35, 31, 0.04);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(34, 35, 31, 0.08);
+      border-color: #CBD8B8;
+    }
+
+
+    .bento-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .bento-desc {
+      font-size: 0.94rem;
+      color: #55594F;
+      line-height: 1.64;
+      margin-bottom: 24px;
+    }
+
+    /* Card 1: Photometric (7 cols) */
+    .bento-card-large {
+      grid-column: span 7;
+    }
+
+    .lux-meter-widget {
+      background: #F4F1E8;
+      border: 1px solid #E2DDD0;
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 10px;
+    }
+
+    .lux-meter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #E5E0D2;
+      margin-bottom: 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .lux-status-label {
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lux-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #658620;
+    }
+
+    .lux-reading {
+      font-family: var(--font-main);
+      font-weight: 600;
+      color: #6C7065;
+    }
+
+    .lux-zones-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .lux-zone-item {
+      background: #FFFFFF;
+      border: 1px solid #E6E2D8;
+      border-radius: 10px;
+      padding: 12px 10px;
+      text-align: center;
+      transition: border-color 0.2s ease;
+    }
+
+    .lux-zone-item.active {
+      border-color: #658620;
+      background: #FAFBF7;
+    }
+
+    .lux-zone-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #2D3A1B;
+      font-family: var(--font-main);
+    }
+
+    .lux-zone-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #72766B;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 4px 0 6px 0;
+    }
+
+    .lux-zone-plant {
+      font-size: 0.75rem;
+      color: #4A6B15;
+      font-weight: 600;
+    }
+
+    /* Card 2: SLA Guarantee (5 cols) */
+    .bento-card-sla {
+      grid-column: span 5;
+      background: #152217;
+      color: #FFFFFF;
+      border-color: #28392B;
+    }
+
+    .bento-card-sla:hover {
+      border-color: #3E5A42;
+      box-shadow: 0 16px 36px rgba(10, 18, 12, 0.25);
+    }
+
+
+    .sla-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .sla-desc {
+      font-size: 0.92rem;
+      color: #A8B2A6;
+      line-height: 1.62;
+      margin-bottom: 22px;
+    }
+
+    .sla-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sla-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.86rem;
+      color: #E2E8DF;
+      line-height: 1.45;
+    }
+
+    .sla-item svg {
+      color: #92C247;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .sla-footer-stamp {
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.78rem;
+      color: #7E8C7C;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+    }
+
+    /* Card 3: Pricing Comparison (5 cols) */
+    .bento-card-pricing {
+      grid-column: span 5;
+    }
+
+    .comparison-pill-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .comp-col {
+      border-radius: 12px;
+      padding: 14px 12px;
+      font-size: 0.78rem;
+    }
+
+    .comp-bad {
+      background: #F8F6F4;
+      border: 1px solid #ECE7E2;
+    }
+
+    .comp-good {
+      background: #F2F7EB;
+      border: 1px solid #D9E5CC;
+    }
+
+    .comp-header {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    }
+
+    .comp-bad .comp-header {
+      color: #7A726C;
+    }
+
+    .comp-good .comp-header {
+      color: #3B5713;
+    }
+
+    .comp-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      color: #555B4F;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .comp-line:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Card 4: Founders (7 cols) */
+    .bento-card-founders {
+      grid-column: span 7;
+    }
+
+    .founders-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 24px;
+      height: 100%;
+      align-items: center;
+    }
+
+    .founders-direct-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: #172418;
+      color: #FFFFFF;
+      border-radius: var(--radius-pill);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      width: fit-content;
+      margin-top: 4px;
+    }
+
+    .founders-direct-btn:hover {
+      background: #2B422D;
+      transform: translateY(-1px);
+    }
+
+    .founders-spec-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .founder-spec-box {
+      background: #FAF8F4;
+      border: 1px solid #EBE7DD;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .spec-metric-number {
+      font-family: var(--font-main);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #4A6B15;
+      line-height: 1.1;
+    }
+
+    .spec-metric-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      margin: 4px 0 2px 0;
+    }
+
+    .spec-metric-sub {
+      font-size: 0.72rem;
+      color: #72776D;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .bento-card-large,
+      .bento-card-sla,
+      .bento-card-pricing,
+      .bento-card-founders {
+        grid-column: span 12;
+      }
+      .founders-card-grid {
+        grid-template-columns: 1fr;
+      }
+      .founders-spec-side {
+        flex-direction: row;
+      }
+      .founder-spec-box {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .lux-zones-row {
+        grid-template-columns: 1fr;
+      }
+      .comparison-pill-box {
+        grid-template-columns: 1fr;
+      }
+      .founders-spec-side {
+        flex-direction: column;
+      }
+      .bento-card {
+        padding: 24px 20px;
+      }
+    }
+
+    /* ==========================================================================
+       5. PROGRAMS & ARCHITECTURAL SCOPE (Architectural Showcase)
+       ========================================================================== */
+    .programs-architectural-section {
+      padding: 110px 0 120px 0;
+      background: #FFFFFF;
+      position: relative;
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    .program-card {
+      background: #FAF8F4;
+      border: 1px solid #E6E2D8;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+    }
+
+    .program-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(34, 35, 31, 0.08);
+      border-color: #CBD8B8;
+    }
+
+    /* Program Card 1: Living Green Wall Feature (7 cols) */
+    .program-card-hero {
+      grid-column: span 7;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .program-hero-img-wrap {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .program-hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .program-card:hover .program-hero-img-wrap img,
+    .program-card:hover .program-media-frame img {
+      transform: scale(1.03);
+    }
+
+    .program-hero-content {
+      padding: 34px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Program Card 2: Care Pass (5 cols, dark forest architectural slate) */
+    .program-card-dark {
+      grid-column: span 5;
+      background: #182017;
+      color: #FAF8F4;
+      border-color: #2D392B;
+      padding: 34px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .program-card-dark:hover {
+      border-color: #495C45;
+      box-shadow: 0 16px 40px rgba(18, 25, 17, 0.25);
+    }
+
+    .program-card-dark .program-title {
+      color: #FFFFFF;
+    }
+
+    .program-card-dark .program-desc {
+      color: #B5BFB0;
+    }
+
+    .program-card-dark .program-spec-item {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.10);
+    }
+
+    .program-card-dark .program-spec-val {
+      color: #92B548;
+    }
+
+    .program-card-dark .program-spec-lbl {
+      color: #B5BFB0;
+    }
+
+    .program-card-dark .program-link {
+      color: #D3E099;
+    }
+
+    .program-card-dark .program-link:hover {
+      color: #FFFFFF;
+    }
+
+    /* Cards 3 & 4 (6 cols each) */
+    .program-card-half {
+      grid-column: span 6;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .program-media-frame {
+      height: 230px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .program-media-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .program-body {
+      padding: 30px 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .program-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .program-index {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.06em;
+    }
+
+    .program-category {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #727668;
+    }
+
+    .program-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .program-desc {
+      font-size: 0.93rem;
+      color: #55594F;
+      line-height: 1.62;
+      margin-bottom: 20px;
+    }
+
+    .program-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .program-spec-item {
+      background: #FFFFFF;
+      border: 1px solid #E6E2D8;
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .program-spec-val {
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 1.2;
+    }
+
+    .program-spec-lbl {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #727668;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .program-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      text-decoration: none;
+      transition: gap 0.2s ease, color 0.2s ease;
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    .program-link:hover {
+      gap: 12px;
+      color: var(--primary);
+    }
+
+    @media (max-width: 1024px) {
+      .programs-grid {
+        grid-template-columns: 1fr;
+      }
+      .program-card-hero,
+      .program-card-dark,
+      .program-card-half {
+        grid-column: span 1;
+      }
+      .program-card-hero {
+        grid-template-columns: 1fr;
+      }
+      .program-hero-img-wrap {
+        height: 240px;
+      }
+    }
+
+    /* ==========================================================================
+       6. THE 4-STEP ARCHITECTURAL FRAMEWORK ("How It Works")
+       ========================================================================== */
+    .process-steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+    }
+
+    .process-card {
+      background: #FFFFFF;
+      border: 1px solid #E6E2D8;
+      border-radius: 20px;
+      padding: 30px 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 16px rgba(34, 35, 31, 0.03);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .process-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(34, 35, 31, 0.08);
+      border-color: #CBD8B8;
+    }
+
+    .step-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #EFECE4;
+    }
+
+    .step-phase-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .step-timeline-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #6C7265;
+      background: #F4F1EA;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .step-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #FAF8F4;
+      border: 1px solid #E6E2D8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-dark);
+      margin-bottom: 18px;
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .process-card:hover .step-icon-wrap {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: #55594F;
+      line-height: 1.6;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+
+    .step-deliverable-box {
+      background: #FAF8F4;
+      border: 1px solid #EAE6DC;
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #43513C;
+      letter-spacing: 0.02em;
+    }
+
+    .step-deliverable-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       7. FOUNDERS & CONSULTATION BANNER (Superhealth CTA)
+       ========================================================================== */
+    .cta-banner-box {
+      background: linear-gradient(135deg, var(--charcoal) 0%, #161814 100%);
+      border-radius: var(--radius-xl);
+      padding: 56px 48px;
+      color: #FFFFFF;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+      box-shadow: 0 20px 48px rgba(34, 35, 31, 0.15);
+    }
+
+    .cta-title {
+      font-size: clamp(2rem, 3.2vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: #FFFFFF;
+    }
+
+    .cta-title span {
+      color: var(--primary-accent);
+    }
+
+    .cta-desc {
+      font-size: 1.05rem;
+      color: #C6CCC1;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn-primary {
+      padding: 14px 28px;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(118, 152, 33, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .cta-btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .cta-btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .cta-btn-whatsapp:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    /* Founder Card Inside CTA */
+    .founder-info-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+
+    .founder-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .founder-avatar-bee {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .founder-avatar-bee img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .founder-names {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .founder-role {
+      font-size: 0.82rem;
+      color: var(--primary-accent);
+      font-weight: 600;
+    }
+
+    .founder-quote {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #D3D9CF;
+      font-style: italic;
+    }
+
+    /* ==========================================================================
+       8. LIGHT-BG FOOTER WITH LIFTED WORDMARK (Superhealth Structure)
+       ========================================================================== */
+    .site-footer {
+      background-color: #F4F1E8; /* Light warm canvas - logo shines naturally */
+      color: var(--charcoal);
+      padding-top: 70px;
+      padding-bottom: 60px; /* Lifted up, not stuck to the bottom */
+      border-top: 1px solid var(--border-card);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .footer-tier {
+      padding: 24px 0;
+      border-top: 1px solid rgba(34, 35, 31, 0.08);
+    }
+
+    .footer-tier:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .footer-nav-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-col-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-col-links a {
+      color: var(--charcoal);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+
+    .footer-col-links a:hover {
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .footer-col-links.right-align {
+      text-align: right;
+    }
+
+    .footer-col-links.right-align a:hover {
+      transform: translateX(-4px);
+    }
+
+    /* Tier 2: Legal links */
+    .footer-legal-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-legal-row a {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-legal-row a:hover {
+      color: var(--charcoal);
+    }
+
+    /* Tier 3: Concierge Hotline */
+    .footer-concierge-row {
+      font-size: 1rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-concierge-row strong {
+      color: var(--charcoal);
+      font-weight: 800;
+    }
+
+    .footer-concierge-row a {
+      color: var(--primary-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer-concierge-row a:hover {
+      text-decoration: underline;
+    }
+
+    /* Tier 4: Location & Copyright */
+    .footer-location-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .footer-location-col strong {
+      color: var(--charcoal);
+      display: block;
+      margin-bottom: 2px;
+      font-weight: 700;
+    }
+
+    /* Tier 5: Lifted Wordmark on Light Background */
+    .footer-giant-wordmark-wrap {
+      width: 100%;
+      padding-top: 48px;
+      padding-bottom: 16px; /* Lifted up from bottom edge */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+
+    .footer-giant-wordmark {
+      font-size: clamp(3.2rem, 13.5vw, 13.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.035em;
+      text-transform: none; /* Exact same as navbar, not full caps */
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 1.8vw;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-giant-wordmark .wordmark-bee {
+      display: inline-block;
+      height: clamp(3rem, 11vw, 11rem);
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 14px rgba(34, 35, 31, 0.06));
+    }
+
+    .wordmark-green {
+      color: var(--charcoal);
+    }
+
+    .wordmark-bees {
+      color: var(--primary);
+    }
+
+    .footer-giant-wordmark .wordmark-bee {
+      display: inline-block;
+      height: clamp(3rem, 11vw, 11rem);
+      width: auto;
+      vertical-align: middle;
+      transform: translateY(-0.8vw);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .plant-stage-center {
+        height: 480px;
+      }
+      .plant-arc-elements {
+        height: 400px;
+      }
+      .plant-orbit-item {
+        width: 260px;
+        height: 340px;
+        margin-top: -170px;
+        margin-left: -130px;
+      }
+      .plant-orbit-item img {
+        max-height: 300px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-section {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding-top: 100px;
+        padding-bottom: 40px;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .hero-img-wrap {
+        height: 320px;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .process-steps-row {
+        grid-template-columns: 1fr 1fr;
+      }
+      .cta-banner-box {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .btn-pill-secondary {
+        display: none;
+      }
+      .process-steps-row {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .plant-stage-center {
+        height: 360px;
+      }
+      .plant-orbit-item {
+        width: 200px;
+        height: 260px;
+        margin-top: -130px;
+        margin-left: -100px;
+      }
+      .plant-orbit-item img {
+        max-height: 220px;
+      }
+      .plant-arc-track {
+        width: 320px;
+        top: 20px;
+      }
+      .plant-hud {
+        padding: 20px;
+      }
+      .why-us-section {
+        padding: 68px 0 76px 0;
+      }
+      .plant-carousel-section {
+        padding: 68px 0 60px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       1. FLOATING GLASS PILL NAVBAR (Superhealth Signature)
+       ====================================================================== -->
+  <header class="nav-wrapper">
+    <nav class="glass-nav" aria-label="Main Navigation">
+      <!-- Logo: HD Bee Emblem + Greenbees Wordmark -->
+      <a href="#" class="nav-brand">
+        <img src="./assets/images/greenbees-logo-hd.png" alt="Greenbees Logo" class="nav-logo-img">
+        <span class="nav-brand-text">Green<span>bees</span></span>
+      </a>
+
+      <!-- Center Links -->
+      <ul class="nav-menu">
+        <li><a href="#plants-collection" class="nav-link">Flora</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#why-us" class="nav-link">Why Greenbees</a></li>
+        <li><a href="#process" class="nav-link">How It Works</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+      </ul>
+
+      <!-- Right CTAs -->
+      <div class="nav-cta-group">
+        <a href="https://wa.me/" target="_blank" class="btn-pill-secondary">
+          <span>WhatsApp</span>
+        </a>
+        <a href="#book-audit" class="btn-pill-primary">
+          <span>Book Free Audit</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ======================================================================
+       2. FULLSCREEN DARK HERO SECTION (End-to-End Viewport)
+       ====================================================================== -->
+  <section class="hero-section">
+    <div class="container hero-container-fullscreen">
+      <div class="hero-content-fullscreen">
+        
+        <h1 class="hero-title">
+          Zero-Hassle Living Greenery For <span class="highlight-text">Bangalore Workplaces.</span>
+        </h1>
+
+        <p class="hero-desc">
+          Transparent pricing, weekly plant care, and custom vertical living walls. Designed and maintained with a 100% free plant replacement guarantee.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#book-audit" class="hero-btn-main">
+            <span>Book Free On-Site Audit</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <a href="https://wa.me/" target="_blank" class="hero-btn-whatsapp">
+            <svg viewBox="0 0 24 24">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+            </svg>
+            <span>Chat with Studio</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================================
+       4. WHY GREENBEES (Superhealth 4 Pillars)
+       ====================================================================== -->
+  <section id="why-us" class="why-us-section">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-tag">Methodology &amp; Standards</span>
+        <h2 class="section-heading">Engineered for accountability, not guesswork.</h2>
+        <p class="section-sub">Traditional office plants die because vendors guess light levels and cut maintenance corners. Here is how Greenbees solves corporate biophilia with scientific rigor.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- BENTO CARD 1: PHOTOMETRIC AUDITING (7 cols) -->
+        <div class="bento-card bento-card-large">
+          <div>
+            <h3 class="bento-title">We map light &amp; HVAC airflow before recommending a single leaf.</h3>
+            <p class="bento-desc">Most indoor plants fail because light drops exponentially away from windows. During our on-site audit, we measure exact Lux levels and AC draft velocity across every workstation cluster.</p>
+          </div>
+          
+          <!-- Interactive / Visual Lux Meter Blueprint -->
+          <div class="lux-meter-widget">
+            <div class="lux-meter-header">
+              <span class="lux-status-label">
+                <span class="lux-status-dot"></span>
+                Light &amp; Airflow Calibrator
+              </span>
+              <span class="lux-reading">Bangalore Office Spec</span>
+            </div>
+            <div class="lux-zones-row">
+              <div class="lux-zone-item active">
+                <div class="lux-zone-val">150–350 Lux</div>
+                <div class="lux-zone-tag">Deep Floor / Meeting</div>
+                <div class="lux-zone-plant">ZZ Plant &bull; Sansevieria</div>
+              </div>
+              <div class="lux-zone-item">
+                <div class="lux-zone-val">400–850 Lux</div>
+                <div class="lux-zone-tag">Diffused Open Desks</div>
+                <div class="lux-zone-plant">Money Plant &bull; Aglaonema</div>
+              </div>
+              <div class="lux-zone-item">
+                <div class="lux-zone-val">1200+ Lux</div>
+                <div class="lux-zone-tag">Perimeter Lounges</div>
+                <div class="lux-zone-plant">Areca Palm &bull; Ficus</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BENTO CARD 2: ZERO-LOSS SLA (5 cols) -->
+        <div class="bento-card bento-card-sla">
+          <div>
+            <h3 class="sla-title">Guaranteed Zero-Loss Foliage SLA</h3>
+            <p class="sla-desc">Drooping, yellowing, or dust accumulation? We replace foliage within 48 hours at zero invoice charge to your facilities team.</p>
+            
+            <ul class="sla-checklist">
+              <li class="sla-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Weekly soil moisture &amp; root aeration probing</span>
+              </li>
+              <li class="sla-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Guaranteed 48-hour replacement turnaround</span>
+              </li>
+              <li class="sla-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Zero cost line items for dead plant replacements</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="sla-footer-stamp">
+            <span>Official Greenbees Service Standard</span>
+          </div>
+        </div>
+
+        <!-- BENTO CARD 3: TRANSPARENT FIXED PRICING (5 cols) -->
+        <div class="bento-card bento-card-pricing">
+          <div>
+            <h3 class="bento-title">Fixed all-inclusive pricing. No hidden fees.</h3>
+            <p class="bento-desc">Traditional vendors charge for transport, soil top-ups, and pruning visits. Greenbees operates on transparent fixed monthly rental or outright purchase.</p>
+          </div>
+
+          <!-- Comparison Box -->
+          <div class="comparison-pill-box">
+            <div class="comp-col comp-bad">
+              <div class="comp-header">Traditional Nurseries</div>
+              <div class="comp-line">&times; Unpredictable maintenance bills</div>
+              <div class="comp-line">&times; Extra charge for soil &amp; fertilizer</div>
+              <div class="comp-line">&times; You pay if plants die</div>
+            </div>
+            <div class="comp-col comp-good">
+              <div class="comp-header">Greenbees Pass</div>
+              <div class="comp-line">&check; One fixed predictable monthly cost</div>
+              <div class="comp-line">&check; Nutrients &amp; pruning included</div>
+              <div class="comp-line">&check; 100% free plant replacements</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BENTO CARD 4: FOUNDERS ON SITE (7 cols) -->
+        <div class="bento-card bento-card-founders">
+          <div class="founders-card-grid">
+            <div class="founders-text-side">
+              <h3 class="bento-title">In-house senior botanical specialists.</h3>
+              <p class="bento-desc">You don't deal with rotating junior subcontractors. Our senior in-house horticulturists conduct every on-site audit, calibrate plant genetics, and maintain weekly health logs for your campus.</p>
+              
+              <a href="https://wa.me/" target="_blank" class="founders-direct-btn">
+                <span>Chat with Botanical Specialist</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+
+            <div class="founders-spec-side">
+              <div class="founder-spec-box">
+                <div class="spec-metric-number">100%</div>
+                <div class="spec-metric-label">Founder-Led Audits</div>
+                <p class="spec-metric-sub">Every office inspected in person before proposal.</p>
+              </div>
+              <div class="founder-spec-box">
+                <div class="spec-metric-number">&lt; 2h</div>
+                <div class="spec-metric-label">Direct WhatsApp Line</div>
+                <p class="spec-metric-sub">Direct channel for facilities heads.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       5. PROGRAMS & ARCHITECTURAL SCOPE (Architectural Showcase)
+       ====================================================================== -->
+  <section id="services" class="programs-architectural-section">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-tag">Programs &amp; Architectural Scope</span>
+        <h2 class="section-heading">Bespoke biophilic systems for corporate architecture.</h2>
+        <p class="section-sub">Engineered to absorb acoustic flutter, optimize worker cognitive endurance, and eliminate plant mortality risk.</p>
+      </div>
+
+      <div class="programs-grid">
+
+        <!-- Program 1: Living Green Walls (Span 7) -->
+        <div class="program-card program-card-hero">
+          <div class="program-hero-img-wrap">
+            <img src="./assets/images/programs/green-walls.jpg" alt="Acoustic Living Green Walls" loading="lazy">
+          </div>
+          <div class="program-hero-content">
+            <div>
+              <div class="program-meta-row">
+                <span class="program-index">01</span>
+                <span class="program-category">Vertical Systems</span>
+              </div>
+              <h3 class="program-title">Acoustic Living Green Walls</h3>
+              <p class="program-desc">Custom vertical hydroponics engineered for double-height reception atriums and glass boardrooms. Replaces hard reverberant walls with sound-absorbing living foliage.</p>
+            </div>
+
+            <div>
+              <div class="program-specs-grid">
+                <div class="program-spec-item">
+                  <span class="program-spec-val">0.75 NRC</span>
+                  <span class="program-spec-lbl">Sound Damping</span>
+                </div>
+                <div class="program-spec-item">
+                  <span class="program-spec-val">Hydroponic</span>
+                  <span class="program-spec-lbl">Closed Loop Drip</span>
+                </div>
+                <div class="program-spec-item">
+                  <span class="program-spec-val">Zero Leak</span>
+                  <span class="program-spec-lbl">Sealed Barrier</span>
+                </div>
+              </div>
+
+              <a href="#book-audit" class="program-link">
+                <span>Explore Green Wall Engineering</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 2: Greenbees Care Pass (Span 5, Architectural Dark Slate) -->
+        <div class="program-card program-card-dark">
+          <div>
+            <div class="program-meta-row">
+              <span class="program-index" style="color: #92B548;">02</span>
+              <span class="program-category" style="color: #9DA897;">Operational SLA</span>
+            </div>
+            <h3 class="program-title">Greenbees Care Pass™</h3>
+            <p class="program-desc">Complete botanical operational handover. Certified horticulturists conduct weekly moisture probing, organic nutrient delivery, and immediate foliage swaps before leaves yellow.</p>
+          </div>
+
+          <div>
+            <div class="program-specs-grid">
+              <div class="program-spec-item">
+                <span class="program-spec-val">48-Hour</span>
+                <span class="program-spec-lbl">Swap SLA</span>
+              </div>
+              <div class="program-spec-item">
+                <span class="program-spec-val">Weekly</span>
+                <span class="program-spec-lbl">Sensor Probes</span>
+              </div>
+              <div class="program-spec-item">
+                <span class="program-spec-val">Zero</span>
+                <span class="program-spec-lbl">Dead Plant Risk</span>
+              </div>
+            </div>
+
+            <a href="#book-audit" class="program-link">
+              <span>Review Care Pass Contract</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Program 3: Desk Biotopes & Floor Specimens (Span 6) -->
+        <div class="program-card program-card-half">
+          <div class="program-media-frame">
+            <img src="./assets/images/programs/office-interior.jpg" alt="Office Interior Plantscaping" loading="lazy">
+          </div>
+          <div class="program-body">
+            <div>
+              <div class="program-meta-row">
+                <span class="program-index">03</span>
+                <span class="program-category">Workstation Biotopes</span>
+              </div>
+              <h3 class="program-title">Desk Clusters &amp; Floor Specimens</h3>
+              <p class="program-desc">Desk-integrated green troughs, acoustic partition planters, and sculptural floor specimen trees placed strictly along calibrated light and AC airflow corridors.</p>
+            </div>
+
+            <div>
+              <div class="program-specs-grid">
+                <div class="program-spec-item">
+                  <span class="program-spec-val">150–850 Lux</span>
+                  <span class="program-spec-lbl">Tuned Species</span>
+                </div>
+                <div class="program-spec-item">
+                  <span class="program-spec-val">NASA VOC</span>
+                  <span class="program-spec-lbl">Air Purifying</span>
+                </div>
+                <div class="program-spec-item">
+                  <span class="program-spec-val">Custom Pot</span>
+                  <span class="program-spec-lbl">Matte Terrazzo</span>
+                </div>
+              </div>
+
+              <a href="#book-audit" class="program-link">
+                <span>Explore Interior Biotopes</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 4: Sky Terraces & Breakouts (Span 6) -->
+        <div class="program-card program-card-half">
+          <div class="program-media-frame">
+            <img src="./assets/images/programs/terrace-gardens.jpg" alt="Sky Terraces and Campus Balcony Gardens" loading="lazy">
+          </div>
+          <div class="program-body">
+            <div>
+              <div class="program-meta-row">
+                <span class="program-index">04</span>
+                <span class="program-category">Exterior Architecture</span>
+              </div>
+              <h3 class="program-title">Sky Terraces &amp; Balcony Gardens</h3>
+              <p class="program-desc">Transforms cafeteria decks, executive balconies, and campus courtyards into resilient biophilic pavilions using sun-hardened indigenous flora and architectural troughs.</p>
+            </div>
+
+            <div>
+              <div class="program-specs-grid">
+                <div class="program-spec-item">
+                  <span class="program-spec-val">Karnataka Native</span>
+                  <span class="program-spec-lbl">Sun-Hardy Flora</span>
+                </div>
+                <div class="program-spec-item">
+                  <span class="program-spec-val">All-Weather</span>
+                  <span class="program-spec-lbl">Wind Stable</span>
+                </div>
+                <div class="program-spec-item">
+                  <span class="program-spec-val">Passive</span>
+                  <span class="program-spec-lbl">Drain Systems</span>
+                </div>
+              </div>
+
+              <a href="#book-audit" class="program-link">
+                <span>Explore Terrace Architecture</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       6. SPECIALIZED BOTANICAL FLORA (Semi-Circle Arc Carousel)
+       ====================================================================== -->
+  <section id="plants-collection" class="plant-carousel-section">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-tag">Specialized Workspace Flora</span>
+        <h2 class="section-heading">Engineered for AC, low lux &amp; peak productivity.</h2>
+        <p class="section-sub">We don't supply generic garden plants. Every species is scientifically selected for Bangalore corporate air conditioning, natural lux levels, and zero-maintenance office durability.</p>
+      </div>
+
+      <!-- Semi-Circle Arc Carousel Container -->
+      <div class="plant-carousel-stage">
+
+        <!-- Center Stage: Arc Trajectory & Focal Plant -->
+        <div class="plant-stage-center">
+
+          <!-- Plant Items Orbiting along Arc -->
+          <div class="plant-arc-elements" id="plantArcElements">
+            <!-- 5 plants positioned by JS transforms -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       7. HOW IT WORKS (Superhealth 4-Step Process)
+       ====================================================================== -->
+  <section id="process" class="section-py">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-tag">Turnkey Execution Framework</span>
+        <h2 class="section-heading">How your office gets greened in 4 calibrated phases.</h2>
+        <p class="section-sub">We handle everything from initial photometric calculations to continuous weekly care so your facilities team never has to lift a finger.</p>
+      </div>
+
+      <div class="process-steps-row">
+        <!-- Phase 1 -->
+        <div class="process-card">
+          <div>
+            <div class="step-header-row">
+              <span class="step-phase-label">Phase 01</span>
+              <span class="step-timeline-pill">Day 1</span>
+            </div>
+            <div class="step-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+              </svg>
+            </div>
+            <h3 class="step-title">Photometric &amp; Airflow Audit</h3>
+            <p class="step-desc">Senior botanical engineers visit your Bangalore campus to measure exact workstation Lux levels, AC draft velocities, and acoustic echo hotspots.</p>
+          </div>
+          <div class="step-deliverable-box">
+            <span class="step-deliverable-dot"></span>
+            <span>Lux &amp; Micro-Climate Heatmap</span>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="process-card">
+          <div>
+            <div class="step-header-row">
+              <span class="step-phase-label">Phase 02</span>
+              <span class="step-timeline-pill">48 Hours</span>
+            </div>
+            <div class="step-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                <path d="M3 9h18"></path>
+                <path d="M9 21V9"></path>
+              </svg>
+            </div>
+            <h3 class="step-title">3D Blueprint &amp; Plant Zoning</h3>
+            <p class="step-desc">Architectural CAD layout pairing NASA-certified cultivars to mapped light tiers, complete with pot finishes and transparent fixed-fee line items.</p>
+          </div>
+          <div class="step-deliverable-box">
+            <span class="step-deliverable-dot"></span>
+            <span>3D Spec &amp; Fixed-Fee Quote</span>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="process-card">
+          <div>
+            <div class="step-header-row">
+              <span class="step-phase-label">Phase 03</span>
+              <span class="step-timeline-pill">Weekend</span>
+            </div>
+            <div class="step-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3 class="step-title">White-Glove Weekend Install</h3>
+            <p class="step-desc">Our installation crew delivers planter troughs, living walls, and mature specimen flora over Saturday or Sunday—zero employee downtime.</p>
+          </div>
+          <div class="step-deliverable-box">
+            <span class="step-deliverable-dot"></span>
+            <span>Zero-Downtime Monday Ready</span>
+          </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="process-card">
+          <div>
+            <div class="step-header-row">
+              <span class="step-phase-label">Phase 04</span>
+              <span class="step-timeline-pill">Ongoing</span>
+            </div>
+            <div class="step-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="step-title">Autonomous Care Pass SLA</h3>
+            <p class="step-desc">Scheduled weekly visits by dedicated horticulturists for soil probing, organic feeding, and guaranteed 48-hour foliage swaps under warranty.</p>
+          </div>
+          <div class="step-deliverable-box">
+            <span class="step-deliverable-dot"></span>
+            <span>100% Free Foliage Swap SLA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       7. ENTERPRISE CLIENT SHOWCASE (Social Proof Section)
+       ====================================================================== -->
+  <section id="clients-strip" class="clients-showcase-section">
+    <div class="container">
+      <div class="section-header-center" style="margin-bottom: 28px;">
+        <span class="section-tag">Enterprise Portfolio</span>
+        <h2 class="section-heading">Trusted by Bangalore's Premier Workspaces</h2>
+        <p class="section-sub">Over 85,000+ sq.ft of biophilic workplace flora actively maintained across Outer Ring Road, Whitefield &amp; Electronic City campuses.</p>
+      </div>
+
+      <!-- Balanced Logo Cards Grid -->
+      <div class="client-cards-grid">
+        <div class="client-logo-card" title="Volvo Group Bangalore">
+          <img src="./assets/logos/volvo.svg" alt="Volvo" class="client-card-img logo-volvo" loading="lazy">
+        </div>
+
+        <div class="client-logo-card" title="Nokia R&D Campus">
+          <img src="./assets/logos/nokia.svg" alt="Nokia" class="client-card-img logo-nokia" loading="lazy">
+        </div>
+
+        <div class="client-logo-card" title="Wabtec Corporation">
+          <img src="./assets/logos/wabtec.svg" alt="Wabtec" class="client-card-img logo-wabtec" loading="lazy">
+        </div>
+
+        <div class="client-logo-card" title="Federal Bank Corporate Offices">
+          <img src="./assets/logos/federal-bank.svg" alt="Federal Bank" class="client-card-img logo-federal" loading="lazy">
+        </div>
+
+        <div class="client-logo-card" title="Biocon Park Bangalore">
+          <img src="./assets/logos/biocon.svg" alt="Biocon" class="client-card-img logo-biocon" loading="lazy">
+        </div>
+
+        <div class="client-logo-card" title="Hilton Hotels & Resorts">
+          <img src="./assets/logos/hilton.svg" alt="Hilton" class="client-card-img logo-hilton" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       8. FOUNDERS & CONSULTATION BANNER (Superhealth CTA)
+       ====================================================================== -->
+  <section id="book-audit" class="section-py" style="padding-top: 0;">
+    <div class="container">
+      <div class="cta-banner-box">
+        
+        <div>
+          <h2 class="cta-title">Ready for a healthier, <span>greener workplace?</span></h2>
+          <p class="cta-desc">
+            Book a complimentary on-site audit with our botanical engineering team. We'll evaluate your floor plan, recommend the ideal botanical setup, and give you transparent pricing within 48 hours.
+          </p>
+
+          <div class="cta-actions">
+            <a href="https://wa.me/" target="_blank" class="cta-btn-primary">
+              <span>Book Free Audit via WhatsApp</span>
+            </a>
+
+            <a href="tel:+919876543210" class="cta-btn-whatsapp">
+              <span>Call Studio Directly</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Founder Note -->
+        <div class="founder-info-card">
+          <div class="founder-header">
+            <div class="founder-avatar-bee">
+              <img src="./assets/images/greenbees-logo-hd.png" alt="Greenbees">
+            </div>
+            <div>
+              <div class="founder-names">Greenbees Studio</div>
+              <div class="founder-role">Bangalore Horticultural Team</div>
+            </div>
+          </div>
+          <p class="founder-quote">
+            “We don't just supply plants; we build living ecosystems and look after them week after week so your workspace always feels alive.”
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       8. SUPERHEALTH-STYLE FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Tier 1: Main Links Navigation Grid -->
+      <div class="footer-tier">
+        <div class="footer-nav-grid">
+          <ul class="footer-col-links">
+            <li><a href="#services">Office Plantscaping</a></li>
+            <li><a href="#services">Vertical Living Walls</a></li>
+            <li><a href="#services">Terrace Landscaping</a></li>
+            <li><a href="#services">Greenbees Care Pass™</a></li>
+            <li><a href="#why-us">Why Greenbees</a></li>
+            <li><a href="#book-audit">Book Free On-Site Audit</a></li>
+          </ul>
+
+          <ul class="footer-col-links right-align">
+            <li><a href="https://instagram.com/greenbeesblr" target="_blank">Instagram</a></li>
+            <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+            <li><a href="https://wa.me/" target="_blank">WhatsApp Direct</a></li>
+            <li><a href="mailto:hello@greenbees.in">Contact Studio</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Tier 2: Legal & Policies -->
+      <div class="footer-tier">
+        <div class="footer-legal-row">
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Plant Health Warranty Policies</a>
+        </div>
+      </div>
+
+      <!-- Tier 3: Concierge & Direct Hotline -->
+      <div class="footer-tier">
+        <div class="footer-concierge-row">
+          <span>For <strong>Plant Consultations &amp; Office Audits</strong> contact our Bangalore team:</span>
+          <a href="tel:+919876543210">+91 98765 43210</a>
+        </div>
+      </div>
+
+      <!-- Tier 4: Location & Copyright -->
+      <div class="footer-tier">
+        <div class="footer-location-row">
+          <div class="footer-location-col">
+            <strong>Greenbees Studio</strong>
+            Indiranagar &bull; Koramangala,<br>
+            Bengaluru, Karnataka, India.
+          </div>
+          <div>
+            Copyright &copy; 2026 Greenbees Studio
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tier 5: Giant Lifted Wordmark (Same as navbar: Green in charcoal, bees in green) -->
+    <div class="footer-giant-wordmark-wrap" aria-hidden="true">
+      <h2 class="footer-giant-wordmark">
+        <img src="./assets/images/greenbees-logo-hd.png" alt="" class="wordmark-bee">
+        <span><span class="wordmark-green">Green</span><span class="wordmark-bees">bees</span></span>
+      </h2>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./js/plant-carousel.js"></script>
+</body>
+</html>

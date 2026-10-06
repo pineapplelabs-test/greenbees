@@ -1,0 +1,241 @@
+/* ==========================================================================
+   GREENBEES STUDIO — LIVING STEM PROGRESS RAIL (#1A472E CANVAS)
+   ========================================================================== */
+
+.stem-rail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--stem-rail-width);
+  z-index: 95;
+  background-color: rgba(10, 30, 19, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  user-select: none;
+}
+
+/* Top Studio Crest Icon */
+.rail-crest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 2;
+}
+
+.rail-crest svg {
+  width: 24px;
+  height: 24px;
+  color: var(--moss-accent);
+  transition: transform var(--duration-fast);
+}
+
+.rail-crest:hover svg {
+  transform: scale(1.12);
+  color: var(--moss-glow);
+}
+
+.rail-crest-text {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* Central SVG Stem Track */
+.stem-track-container {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  margin: var(--space-sm) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stem-svg {
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  width: 4px;
+  height: calc(100% - 30px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.stem-bg-path {
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 4 4;
+}
+
+.stem-grow-path {
+  stroke: var(--moss-accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+/* 7 Growth Node Markers */
+.stem-nodes-list {
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  width: 100%;
+  height: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  pointer-events: all;
+  margin: 0;
+  padding: 0;
+}
+
+.stem-node-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+/* Node Dot / Seed */
+.stem-node-anchor {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #0F2E1D;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-faint);
+  transition: all var(--duration-normal) var(--ease-warm);
+  position: relative;
+  z-index: 3;
+}
+
+.stem-node-item:hover .stem-node-anchor {
+  border-color: var(--moss-accent);
+  color: var(--text-main);
+  transform: scale(1.1);
+}
+
+/* Active / Reached State */
+.stem-node-item.is-active .stem-node-anchor,
+.stem-node-item.is-passed .stem-node-anchor {
+  background-color: var(--forest-dark);
+  border-color: var(--moss-accent);
+  color: var(--moss-accent);
+}
+
+.stem-node-item.is-active .stem-node-anchor {
+  box-shadow: 0 0 12px rgba(169, 201, 66, 0.4);
+}
+
+/* Unfurling Leaf SVG */
+.node-leaf-svg {
+  position: absolute;
+  left: 24px;
+  width: 30px;
+  height: 22px;
+  pointer-events: none;
+  transform-origin: 0% 50%;
+  transform: scale(0) rotate(-40deg);
+  opacity: 0;
+  transition: transform 0.65s var(--ease-warm), opacity 0.45s ease;
+  z-index: 2;
+}
+
+.node-leaf-svg path {
+  fill: #0F2E1D;
+  stroke: var(--moss-accent);
+  stroke-width: 1.5;
+}
+
+.stem-node-item:nth-child(even) .node-leaf-svg {
+  left: auto;
+  right: 24px;
+  transform-origin: 100% 50%;
+  transform: scale(0) rotate(40deg) scaleX(-1);
+}
+
+.stem-node-item.is-active .node-leaf-svg,
+.stem-node-item.is-passed .node-leaf-svg {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+.stem-node-item:nth-child(even).is-active .node-leaf-svg,
+.stem-node-item:nth-child(even).is-passed .node-leaf-svg {
+  transform: scale(1) rotate(0deg) scaleX(-1);
+  opacity: 1;
+}
+
+/* Flyout Tooltip */
+.node-flyout-label {
+  position: absolute;
+  left: 48px;
+  background-color: rgba(10, 30, 19, 0.92);
+  backdrop-filter: blur(8px);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s var(--ease-warm), transform 0.25s var(--ease-warm);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.stem-node-item:hover .node-flyout-label,
+.stem-node-item.is-active .node-flyout-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.rail-bottom-meta {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: var(--text-faint);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: var(--space-xs) 0;
+  z-index: 2;
+}
+
+@media (max-width: 800px) {
+  :root {
+    --stem-rail-width: 50px;
+  }
+  .rail-crest-text, .rail-bottom-meta, .node-flyout-label {
+    display: none;
+  }
+}

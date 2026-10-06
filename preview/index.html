@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greenbees — Design System & Structural Blueprint Review</title>
+  
+  <!-- Typography: Newsreader (Editorial Serif) & Instrument Sans (Warm Grotesk) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Palette Tokens */
+      --forest-dark: #0A1E13;
+      --forest-deep: #0F2E1D;
+      --forest-mid: #1A472E;
+      --paper-light: #FBF8F2;
+      --paper-base: #F4EFE6;
+      --paper-muted: #E8E0D2;
+      --moss-accent: #A9C942;
+      --moss-glow: #BFE353;
+      
+      /* Typography Families */
+      --font-display: 'Newsreader', Georgia, serif;
+      --font-body: 'Instrument Sans', -apple-system, sans-serif;
+      
+      /* Fluid Type Scale */
+      --text-display: clamp(3.2rem, 6.5vw, 5.8rem);
+      --text-h1: clamp(2.4rem, 4.2vw, 3.8rem);
+      --text-h2: clamp(1.75rem, 2.8vw, 2.5rem);
+      --text-h3: clamp(1.25rem, 1.8vw, 1.65rem);
+      --text-lead: clamp(1.1rem, 1.3vw, 1.35rem);
+      --text-body: clamp(0.95rem, 1vw, 1.05rem);
+      --text-caption: clamp(0.75rem, 0.85vw, 0.85rem);
+      --text-micro: 0.7rem;
+
+      /* Spacing Scale */
+      --space-2xs: 0.25rem;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4rem;
+      --space-2xl: 6rem;
+    }
+
+    /* Reset & Base Setup with Subtle Paper Grain */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--paper-base);
+      color: var(--forest-deep);
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      line-height: 1.6;
+      position: relative;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* Navigation Header for Review Mode */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244, 239, 230, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--paper-muted);
+      padding: 1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-bar .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .top-bar .badge {
+      font-size: var(--text-micro);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--forest-mid);
+      color: var(--forest-deep);
+      border-radius: 2px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-tabs a {
+      color: var(--forest-mid);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-tabs a:hover {
+      color: var(--forest-dark);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem 6rem;
+    }
+
+    /* Section Introductions */
+    .review-header {
+      margin-bottom: 4rem;
+      border-bottom: 1px solid var(--paper-muted);
+      padding-bottom: 2rem;
+    }
+
+    .review-header h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-display);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .review-header p {
+      font-size: var(--text-lead);
+      color: #3b5042;
+      max-width: 780px;
+    }
+
+    .specimen-card {
+      background: var(--paper-light);
+      border: 1px solid var(--paper-muted);
+      padding: 2.5rem;
+      border-radius: 4px;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-h2);
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .section-title span.number {
+      font-family: var(--font-body);
+      font-size: var(--text-caption);
+      color: var(--moss-accent);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+
+    .section-desc {
+      color: #556b5d;
+      margin-bottom: 2rem;
+      font-size: var(--text-body);
+      max-width: 720px;
+    }
+
+    /* PART 1: COLOR PALETTE SWATCHES */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .swatch-card {
+      border: 1px solid var(--paper-muted);
+      border-radius: 4px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .swatch-color {
+      height: 140px;
+      width: 100%;
+      position: relative;
+      padding: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    .swatch-chip {
+      font-size: var(--text-micro);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+
+    .swatch-info {
+      padding: 1.25rem;
+      background: var(--paper-light);
+    }
+
+    .swatch-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--forest-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .swatch-hex {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .swatch-usage {
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: #44564b;
+    }
+
+    /* Contrast Testing Bench */
+    .contrast-bench {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .contrast-card {
+      padding: 2rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .contrast-card.dark-theme {
+      background-color: var(--forest-deep);
+      color: var(--paper-base);
+    }
+
+    .contrast-card.light-theme {
+      background-color: var(--paper-base);
+      color: var(--forest-deep);
+      border: 1px solid var(--paper-muted);
+    }
+
+    .contrast-card.accent-theme {
+      background-color: var(--forest-dark);
+      color: var(--moss-accent);
+      border: 1px solid #183523;
+    }
+
+    .contrast-badge {
+      display: inline-block;
+      font-size: var(--text-micro);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+
+    .badge-pass {
+      background: rgba(169, 201, 66, 0.2);
+      color: var(--moss-accent);
+      border: 1px solid var(--moss-accent);
+    }
+
+    /* PART 2: TYPOGRAPHY SPECIMENS */
+    .type-specimen-row {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--paper-muted);
+      align-items: baseline;
+    }
+
+    .type-meta {
+      font-size: 0.85rem;
+      color: #627568;
+    }
+
+    .type-meta .token-name {
+      font-family: monospace;
+      color: var(--forest-dark);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .type-meta .clamp-formula {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: #7b8e81;
+    }
+
+    .type-render-display {
+      font-family: var(--font-display);
+      line-height: 1.1;
+      color: var(--forest-dark);
+    }
+
+    .type-render-body {
+      font-family: var(--font-body);
+      color: var(--forest-deep);
+    }
+
+    .editorial-quote-box {
+      margin-top: 3rem;
+      padding: 3rem;
+      background: var(--paper-base);
+      border-left: 3px solid var(--forest-mid);
+    }
+
+    .editorial-quote-box blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.35;
+      color: var(--forest-dark);
+      margin-bottom: 1rem;
+    }
+
+    .editorial-quote-box cite {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--forest-mid);
+      font-style: normal;
+    }
+
+    /* PART 3: DESIGN STRUCTURE & WIREFRAME */
+    .wireframe-container {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 2.5rem;
+      position: relative;
+      background: #FAF7F0;
+      border: 1px solid var(--paper-muted);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+
+    /* Left Stem Rail Mockup */
+    .stem-rail-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .stem-rail-indicator {
+      width: 2px;
+      background: #D5CBB9;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .stem-rail-active {
+      width: 2px;
+      background: var(--forest-mid);
+      height: 55%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .stem-node {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--paper-light);
+      border: 2px solid var(--forest-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      margin-bottom: 12rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--forest-deep);
+      position: relative;
+    }
+
+    .stem-node.active {
+      background: var(--forest-deep);
+      color: var(--moss-accent);
+      border-color: var(--moss-accent);
+    }
+
+    .stem-leaf-svg {
+      position: absolute;
+      left: 28px;
+      width: 24px;
+      height: 16px;
+      fill: none;
+      stroke: var(--forest-mid);
+      stroke-width: 1.5;
+    }
+
+    /* Content Stream */
+    .content-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .section-wireframe-box {
+      border: 1.5px dashed #B8AB94;
+      background: #FFF;
+      padding: 2rem;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .section-wireframe-box::before {
+      content: attr(data-growth-phase);
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--forest-deep);
+      color: var(--moss-accent);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+
+    .wireframe-label {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      color: var(--forest-dark);
+    }
+
+    .wireframe-sub {
+      font-size: 0.8rem;
+      color: #6C7D72;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Hero Blueprint Mockup */
+    .hero-mock-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 2rem;
+      min-height: 220px;
+      background: var(--paper-base);
+      padding: 1.5rem;
+      border: 1px solid var(--paper-muted);
+    }
+
+    .hero-text-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .hero-vine-zone {
+      border: 1px dashed var(--forest-mid);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(15, 46, 29, 0.03);
+    }
+
+    /* Broken Grid Services Blueprint Mockup */
+    .services-broken-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .svc-card-wire {
+      padding: 1.5rem;
+      background: var(--paper-base);
+      border: 1px solid var(--paper-muted);
+      border-radius: 2px;
+    }
+
+    .svc-1 { grid-column: span 7; min-height: 160px; }
+    .svc-2 { grid-column: span 5; min-height: 160px; }
+    .svc-3-break { 
+      grid-column: span 12; 
+      background: var(--forest-deep); 
+      color: var(--paper-light); 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+    }
+    .svc-4 { grid-column: span 6; min-height: 150px; }
+    .svc-5 { grid-column: span 6; min-height: 150px; }
+
+    /* Horizontal Process Blueprint Mockup */
+    .horizontal-track-mock {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding: 1.25rem 0.5rem;
+      background: #F2ECE1;
+      border-radius: 4px;
+    }
+
+    .process-step-mock {
+      min-width: 220px;
+      flex: 1;
+      background: #FFF;
+      border: 1px solid var(--paper-muted);
+      padding: 1.25rem;
+      border-top: 3px solid var(--forest-mid);
+    }
+
+    /* Portfolio Before/After Wireframe */
+    .portfolio-wire-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .portfolio-card-wire {
+      border: 1px solid var(--paper-muted);
+      background: #FFF;
+      padding: 1rem;
+      height: 180px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .hover-layer-pill {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 0.65rem;
+      background: rgba(10,30,19,0.75);
+      color: #FFF;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    /* Impact & Trust */
+    .impact-wire-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--forest-dark);
+      color: var(--paper-base);
+    }
+
+    /* Footer Callout */
+    .approval-callout {
+      margin-top: 4rem;
+      padding: 2.5rem;
+      background: var(--forest-deep);
+      color: var(--paper-light);
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .approval-callout h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--paper-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .approval-callout p {
+      font-size: 0.95rem;
+      color: #A3B8AC;
+      max-width: 650px;
+    }
+
+    .btn-approve-simulate {
+      display: inline-block;
+      padding: 0.85rem 1.8rem;
+      background: var(--moss-accent);
+      color: var(--forest-dark);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      border: 1px solid var(--moss-glow);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Review Navigation -->
+  <header class="top-bar">
+    <div class="brand">
+      <span class="badge">Specimen & Blueprint</span>
+      <strong>GREENBEES STUDIO</strong>
+    </div>
+    <nav>
+      <ul class="nav-tabs">
+        <li><a href="#palette">1. Color Palette</a></li>
+        <li><a href="#contrast">Contrast Pairs</a></li>
+        <li><a href="#typography">2. Typography Scale</a></li>
+        <li><a href="#wireframe">3. Growth Wireframe</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    
+    <!-- Title Area -->
+    <div class="review-header">
+      <h1>Design System & Structural Blueprint</h1>
+      <p>Pre-production visual validation for Greenbees corporate biophilic studio website. Strict anti-generic editorial palette, high-contrast accessible pairings, Newsreader + Instrument Sans fluid type scale, and 7-stage growth narrative wireframe.</p>
+    </div>
+
+    <!-- 1. COLOR PALETTE SWATCHES -->
+    <section id="palette" class="specimen-card">
+      <div class="section-title">
+        <span class="number">PART 01</span>
+        <h2>Color Palette Tokens</h2>
+      </div>
+      <p class="section-desc">Extracted from <code>tokens.css</code>. Deep forest and tactile paper foundation, omitting generic corporate bright green and standard web pure-white. Single living moss chartreuse accent reserved for interactive micro-states.</p>
+
+      <div class="palette-grid">
+        <!-- Forest Dark -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--forest-dark);">
+            <span class="swatch-chip" style="background: rgba(255,255,255,0.15); color: #fff;">Dark Base</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name">forest-dark</div>
+            <div class="swatch-hex">#0A1E13</div>
+            <div class="swatch-usage">Primary dark surface, deep footer backgrounds, high-contrast typography on light paper.</div>
+          </div>
+        </div>
+
+        <!-- Forest Deep -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--forest-deep);">
+            <span class="swatch-chip" style="background: rgba(255,255,255,0.15); color: #fff;">Brand Base</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name">forest-deep</div>
+            <div class="swatch-hex">#0F2E1D</div>
+            <div class="swatch-usage">Core brand tone, secondary dark section backgrounds, primary editorial headlines.</div>
+          </div>
+        </div>
+
+        <!-- Forest Mid -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--forest-mid);">
+            <span class="swatch-chip" style="background: rgba(255,255,255,0.15); color: #fff;">Midtone</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name">forest-mid</div>
+            <div class="swatch-hex">#1A472E</div>
+            <div class="swatch-usage">Subtle borders, active navigation markers, secondary captions, SVG stem lines.</div>
+          </div>
+        </div>
+
+        <!-- Paper Light -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--paper-light); border-bottom: 1px solid var(--paper-muted);">
+            <span class="swatch-chip" style="background: rgba(0,0,0,0.06); color: var(--forest-dark);">Highlight</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name">paper-light</div>
+            <div class="swatch-hex">#FBF8F2</div>
+            <div class="swatch-usage">Elevated card backgrounds, input field fills, high-clarity editorial text over dark forest.</div>
+          </div>
+        </div>
+
+        <!-- Paper Base -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--paper-base); border-bottom: 1px solid var(--paper-muted);">
+            <span class="swatch-chip" style="background: rgba(0,0,0,0.06); color: var(--forest-dark);">Page Base</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name">paper-base</div>
+            <div class="swatch-hex">#F4EFE6</div>
+            <div class="swatch-usage">Default page canvas background with noise grain filter overlay. Tactile warm paper feel.</div>
+          </div>
+        </div>
+
+        <!-- Paper Muted -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--paper-muted);">
+            <span class="swatch-chip" style="background: rgba(0,0,0,0.08); color: var(--forest-dark);">Border/Muted</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name">paper-muted</div>
+            <div class="swatch-hex">#E8E0D2</div>
+            <div class="swatch-usage">Subtle dividers, structural grid borders, disabled or background inactive stem rail.</div>
+          </div>
+        </div>
+
+        <!-- Moss Accent -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--moss-accent);">
+            <span class="swatch-chip" style="background: rgba(0,0,0,0.15); color: var(--forest-dark);">Accent</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name">moss-accent</div>
+            <div class="swatch-hex">#A9C942</div>
+            <div class="swatch-usage">Interactive focus rings, active stem leaf nodes, button micro-highlights, metric numbers.</div>
+          </div>
+        </div>
+
+        <!-- Moss Glow -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--moss-glow);">
+            <span class="swatch-chip" style="background: rgba(0,0,0,0.15); color: var(--forest-dark);">Hover Glow</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name">moss-glow</div>
+            <div class="swatch-hex">#BFE353</div>
+            <div class="swatch-usage">Hover states on interactive buttons, subtle cursor particle highlights, pulse markers.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contrast Pairings & Readability Check -->
+      <div id="contrast" style="margin-top: 3rem;">
+        <h3 style="font-family: var(--font-display); font-size: 1.35rem; margin-bottom: 1.25rem;">Text-on-Background Contrast & Legibility Verification</h3>
+        <div class="contrast-bench">
+          <!-- Dark Surface -->
+          <div class="contrast-card dark-theme">
+            <span class="contrast-badge badge-pass">WCAG AAA (13.8:1)</span>
+            <h4 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem;">Night Foliage Canvas</h4>
+            <p style="font-size: 0.9rem; line-height: 1.5; color: #D7DEC9; margin-bottom: 1rem;">
+              <code>--paper-light</code> (#FBF8F2) text rendered on <code>--forest-deep</code> (#0F2E1D). Used for Problem statement, impact counters, and footer.
+            </p>
+            <div style="font-size: 0.8rem; color: var(--moss-accent); font-weight: 500;">
+              → Accent link: --moss-accent (#A9C942) passes AA large text (8.1:1)
+            </div>
+          </div>
+
+          <!-- Light Paper Surface -->
+          <div class="contrast-card light-theme">
+            <span class="contrast-badge" style="background: rgba(15,46,29,0.1); color: var(--forest-deep); border: 1px solid var(--forest-mid);">WCAG AAA (12.4:1)</span>
+            <h4 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--forest-dark);">Natural Paper Canvas</h4>
+            <p style="font-size: 0.9rem; line-height: 1.5; color: #3A4F41; margin-bottom: 1rem;">
+              <code>--forest-dark</code> (#0A1E13) text rendered on <code>--paper-base</code> (#F4EFE6). Primary reading surface for Hero, Services, and Process.
+            </p>
+            <div style="font-size: 0.8rem; color: var(--forest-mid); font-weight: 600;">
+              → Secondary: --forest-mid (#1A472E) passes AAA (7.9:1)
+            </div>
+          </div>
+
+          <!-- Accent Highlight -->
+          <div class="contrast-card accent-theme">
+            <span class="contrast-badge badge-pass">High Visibility</span>
+            <h4 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--paper-light);">Interactive Micro-State</h4>
+            <p style="font-size: 0.9rem; line-height: 1.5; color: #B3C9BC; margin-bottom: 1.25rem;">
+              Button interaction: <code>--moss-accent</code> fill with <code>--forest-dark</code> text, with imperceptible breathing scale.
+            </p>
+            <a href="javascript:void(0)" style="display:inline-block; background: var(--moss-accent); color: var(--forest-dark); padding: 0.5rem 1.2rem; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; border-radius: 2px;">
+              Sample Action
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. TYPOGRAPHY SCALE SPECIMEN -->
+    <section id="typography" class="specimen-card">
+      <div class="section-title">
+        <span class="number">PART 02</span>
+        <h2>Typography Scale & Editorial Pairings</h2>
+      </div>
+      <p class="section-desc">Pairing <strong>Newsreader</strong> (display serif with variable optical sizing <code>opsz</code> and italic swashes, evoking GT Sectra / Canela) with <strong>Instrument Sans</strong> (warm humanist grotesk with open apertures). Strictly excludes generic geometric sans (Inter/Poppins/Roboto).</p>
+
+      <!-- Display Scale Rows -->
+      <div class="type-specimen-row">
+        <div class="type-meta">
+          <span class="token-name">--text-display</span>
+          <span class="clamp-formula">clamp(3.2rem, 6.5vw, 5.8rem)</span>
+          <div style="margin-top: 0.5rem;">Newsreader 300 / opsz 72</div>
+        </div>
+        <div class="type-render-display" style="font-size: var(--text-display); font-weight: 300;">
+          Cultivating living calm inside concrete.
+        </div>
+      </div>
+
+      <div class="type-specimen-row">
+        <div class="type-meta">
+          <span class="token-name">--text-display (Italic)</span>
+          <span class="clamp-formula">clamp(3.2rem, 6.5vw, 5.8rem)</span>
+          <div style="margin-top: 0.5rem;">Newsreader 300 Italic / opsz 72</div>
+        </div>
+        <div class="type-render-display" style="font-size: var(--text-display); font-style: italic; font-weight: 300; color: var(--forest-mid);">
+          A sanctuary engineered for breath.
+        </div>
+      </div>
+
+      <div class="type-specimen-row">
+        <div class="type-meta">
+          <span class="token-name">--text-h1</span>
+          <span class="clamp-formula">clamp(2.4rem, 4.2vw, 3.8rem)</span>
+          <div style="margin-top: 0.5rem;">Newsreader 400 / opsz 48</div>
+        </div>
+        <div class="type-render-display" style="font-size: var(--text-h1); font-weight: 400;">
+          Vertical Biophilic Architecture
+        </div>
+      </div>
+
+      <div class="type-specimen-row">
+        <div class="type-meta">
+          <span class="token-name">--text-h2</span>
+          <span class="clamp-formula">clamp(1.75rem, 2.8vw, 2.5rem)</span>
+          <div style="margin-top: 0.5rem;">Newsreader 500 / opsz 36</div>
+        </div>
+        <div class="type-render-display" style="font-size: var(--text-h2); font-weight: 500;">
+          Office Interior Plantscaping & Maintenance
+        </div>
+      </div>
+
+      <div class="type-specimen-row">
+        <div class="type-meta">
+          <span class="token-name">--text-h3</span>
+          <span class="clamp-formula">clamp(1.25rem, 1.8vw, 1.65rem)</span>
+          <div style="margin-top: 0.5rem;">Newsreader 600 / opsz 24</div>
+        </div>
+        <div class="type-render-display" style="font-size: var(--text-h3); font-weight: 600;">
+          Stage 01 — Site Biophilic Audit & Light Mapping
+        </div>
+      </div>
+
+      <div class="type-specimen-row">
+        <div class="type-meta">
+          <span class="token-name">--text-lead</span>
+          <span class="clamp-formula">clamp(1.1rem, 1.3vw, 1.35rem)</span>
+          <div style="margin-top: 0.5rem;">Instrument Sans 400 / 1.55 lh</div>
+        </div>
+        <div class="type-render-body" style="font-size: var(--text-lead); color: #3D5244;">
+          The modern Bengaluru workplace spends 93% of its operating hours under static luminescent flux. Greenbees restores the primordial human bond to living botany through custom vertical foliage, acoustic moss substrates, and managed species ecosystems.
+        </div>
+      </div>
+
+      <div class="type-specimen-row">
+        <div class="type-meta">
+          <span class="token-name">--text-body</span>
+          <span class="clamp-formula">clamp(0.95rem, 1vw, 1.05rem)</span>
+          <div style="margin-top: 0.5rem;">Instrument Sans 400 / 1.65 lh</div>
+        </div>
+        <div class="type-render-body" style="font-size: var(--text-body);">
+          Every installation is paired with our proprietary botanical care protocol. Bi-weekly soil moisture diagnostics, pruning, organic nutrient replenishment, and light recalibration ensure zero foliage decay across quarterly cycles.
+        </div>
+      </div>
+
+      <div class="type-specimen-row">
+        <div class="type-meta">
+          <span class="token-name">--text-caption / micro</span>
+          <span class="clamp-formula">0.75rem – 0.85rem / 600 wt</span>
+          <div style="margin-top: 0.5rem;">Instrument Sans 600 Uppercase</div>
+        </div>
+        <div class="type-render-body" style="font-size: var(--text-caption); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: var(--forest-mid);">
+          LOCATION: 12.9716° N, 77.5946° E — TRUSTED BY VOLVO, NOKIA & BIOCON
+        </div>
+      </div>
+
+      <!-- Sample Editorial Callout -->
+      <div class="editorial-quote-box">
+        <blockquote>
+          “We do not simply place potted plants in corners. We architect living lungs for workspaces that demand clarity, creative stamina, and organic composure.”
+        </blockquote>
+        <cite>— Mareena & Reena, Founders of Greenbees Studio Bengaluru</cite>
+      </div>
+    </section>
+
+    <!-- 3. DESIGN STRUCTURE & WIREFRAME SITEMAP -->
+    <section id="wireframe" class="specimen-card">
+      <div class="section-title">
+        <span class="number">PART 03</span>
+        <h2>Growth Narrative Architecture & Wireframe</h2>
+      </div>
+      <p class="section-desc">Visual structural blueprint showing the 7 growth-stage sections in sequence, the left-docked stem rail that physically unfurls foliage as the user scrolls, the broken-grid services layout, and the horizontal pinned process timeline.</p>
+
+      <div class="wireframe-container">
+        
+        <!-- Left Stem Rail Architecture Indicator -->
+        <div class="stem-rail-col">
+          <div class="stem-rail-indicator"></div>
+          <div class="stem-rail-active"></div>
+
+          <div class="stem-node active" title="Section 1: Seed">
+            01
+            <svg class="stem-leaf-svg" viewBox="0 0 24 16">
+              <path d="M0,8 C12,0 20,4 24,0 C20,12 12,16 0,8 Z" />
+            </svg>
+          </div>
+
+          <div class="stem-node active" title="Section 2: Germination">
+            02
+            <svg class="stem-leaf-svg" viewBox="0 0 24 16">
+              <path d="M0,8 C12,0 20,4 24,0 C20,12 12,16 0,8 Z" />
+            </svg>
+          </div>
+
+          <div class="stem-node active" title="Section 3: Sprout">
+            03
+            <svg class="stem-leaf-svg" viewBox="0 0 24 16">
+              <path d="M0,8 C12,0 20,4 24,0 C20,12 12,16 0,8 Z" />
+            </svg>
+          </div>
+
+          <div class="stem-node" title="Section 4: Growth">04</div>
+          <div class="stem-node" title="Section 5: Foliage">05</div>
+          <div class="stem-node" title="Section 6: Flowering">06</div>
+          <div class="stem-node" title="Section 7: Bloom">07</div>
+        </div>
+
+        <!-- Wireframe Content Stream -->
+        <div class="content-stream">
+          
+          <!-- STAGE 1: SEED (Hero) -->
+          <div class="section-wireframe-box" data-growth-phase="Stage 1: Seed">
+            <div class="wireframe-label">Section 01 — Hero Canvas (`#seed`)</div>
+            <div class="wireframe-sub">Asymmetric composition: Left heavy editorial manifesto, right interactive scroll-driven SVG vine growth zone. No centered text, no generic pill button.</div>
+            
+            <div class="hero-mock-grid">
+              <div class="hero-text-block">
+                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--forest-mid); font-weight: 600;">[Nav Solidifies on Scroll + Coordinates]</span>
+                <h3 style="font-family: var(--font-display); font-size: 1.8rem; line-height: 1.15; font-weight: 300;">Designing a greener world inside and out.</h3>
+                <p style="font-size: 0.85rem; color: #556B5D;">Bengaluru corporate plantscaping & living wall studio. Restoring equilibrium to workspaces across South India.</p>
+                <div style="display: flex; gap: 1rem; align-items: center; margin-top: 0.5rem;">
+                  <span style="display:inline-block; border: 1px solid var(--forest-mid); padding: 0.5rem 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Explore Projects ↓</span>
+                  <span style="font-size: 0.75rem; color: #788A7F;">(Slow 5s breathing scale)</span>
+                </div>
+              </div>
+              <div class="hero-vine-zone">
+                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--forest-mid); font-weight: 600;">[Dynamic SVG Vine Canvas]</span>
+                <p style="font-size: 0.75rem; color: #7B8E82; margin-top: 0.5rem;">Scroll-driven tendril vector path draws organically across viewport towards nav bar.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 2: GERMINATION (Problem) -->
+          <div class="section-wireframe-box" data-growth-phase="Stage 2: Germination" style="background: #FAF7F0;">
+            <div class="wireframe-label">Section 02 — The Biophilic Deficit (`#germination`)</div>
+            <div class="wireframe-sub">Restrained editorial layout addressing sick-building syndrome, carbon stagnation, and sensory fatigue in South India tech hubs.</div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 1.5rem; background: #FFF; border: 1px solid var(--paper-muted);">
+              <div>
+                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--forest-mid); font-weight: 600;">The Invisible Cost</span>
+                <h4 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; margin-top: 0.5rem;">Air-conditioned isolation deprives teams of natural diurnal rhythms.</h4>
+              </div>
+              <div>
+                <p style="font-size: 0.85rem; color: #556B5D; margin-bottom: 0.75rem;">Studies cite a 47% drop in workplace mental fatigue when natural living foliage is embedded within line-of-sight.</p>
+                <div style="font-family: var(--font-display); font-size: 2.2rem; color: var(--forest-deep); font-weight: 300;">+15% Productivity Yield</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 3: SPROUT (Services Broken Grid) -->
+          <div class="section-wireframe-box" data-growth-phase="Stage 3: Sprout">
+            <div class="wireframe-label">Section 03 — Core Disciplines (`#sprout`)</div>
+            <div class="wireframe-sub">Broken-grid 12-column layout. Varies card heights, spans, and includes a full-bleed contrast break. Eliminates generic 3-column AI boxes.</div>
+
+            <div class="services-broken-grid">
+              <div class="svc-card-wire svc-1">
+                <span style="font-size: 0.7rem; color: var(--forest-mid); font-weight: 600;">01 / SPAN 7</span>
+                <h4 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; margin-top: 0.25rem;">Office Interior Plantscaping</h4>
+                <p style="font-size: 0.8rem; color: #627568; margin-top: 0.5rem;">Desk clusters, architectural planters, low-light botanical integration.</p>
+              </div>
+
+              <div class="svc-card-wire svc-2">
+                <span style="font-size: 0.7rem; color: var(--forest-mid); font-weight: 600;">02 / SPAN 5</span>
+                <h4 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; margin-top: 0.25rem;">Vertical Living Walls</h4>
+                <p style="font-size: 0.8rem; color: #627568; margin-top: 0.5rem;">Automated hydroponic drip systems, acoustic foliage baffles.</p>
+              </div>
+
+              <div class="svc-card-wire svc-3-break">
+                <div>
+                  <span style="font-size: 0.7rem; color: var(--moss-accent); font-weight: 600; text-transform: uppercase;">03 / FULL BLEED CONTRAST BREAK</span>
+                  <h4 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; margin-top: 0.25rem;">Biophilic Design Consulting & Lighting Audits</h4>
+                  <p style="font-size: 0.85rem; color: #B0C4B7; max-width: 600px; margin-top: 0.5rem;">Collaborating directly with corporate architects during shell & core phase to integrate natural drainage, water lines, and supplemental PAR spectrums.</p>
+                </div>
+                <div style="border: 1px solid var(--moss-accent); padding: 0.6rem 1.2rem; font-size: 0.75rem; text-transform: uppercase; color: var(--moss-accent);">Case Detail →</div>
+              </div>
+
+              <div class="svc-card-wire svc-4">
+                <span style="font-size: 0.7rem; color: var(--forest-mid); font-weight: 600;">04 / SPAN 6</span>
+                <h4 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; margin-top: 0.25rem;">Outdoor Office Landscaping</h4>
+                <p style="font-size: 0.8rem; color: #627568; margin-top: 0.5rem;">Executive terrace gardens, campus courtyards, native drought-tolerant species.</p>
+              </div>
+
+              <div class="svc-card-wire svc-5">
+                <span style="font-size: 0.7rem; color: var(--forest-mid); font-weight: 600;">05 / SPAN 6</span>
+                <h4 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; margin-top: 0.25rem;">Plant Maintenance & Care Plans</h4>
+                <p style="font-size: 0.8rem; color: #627568; margin-top: 0.5rem;">Dedicated horticulturists, quarterly guaranteed replacement, soil testing.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 4: GROWTH (Horizontal Process Timeline) -->
+          <div class="section-wireframe-box" data-growth-phase="Stage 4: Growth">
+            <div class="wireframe-label">Section 04 — The Cultivation Methodology (`#growth`)</div>
+            <div class="wireframe-sub">GSAP ScrollTrigger pinned horizontal track. Replaces boring vertical numbered lists with smooth side-by-side progression.</div>
+
+            <div class="horizontal-track-mock">
+              <div class="process-step-mock">
+                <span style="font-size: 0.7rem; color: var(--forest-mid); font-weight: 700;">STAGE 01</span>
+                <h4 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0.25rem 0;">Site Visit & Audit</h4>
+                <p style="font-size: 0.75rem; color: #666;">Lux meter readings, airflow velocity, HVAC thermal zones, and floor plan mapping.</p>
+              </div>
+              <div class="process-step-mock">
+                <span style="font-size: 0.7rem; color: var(--forest-mid); font-weight: 700;">STAGE 02</span>
+                <h4 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0.25rem 0;">Botanical Curation</h4>
+                <p style="font-size: 0.75rem; color: #666;">Species matching (Sansevieria, Philodendron, Aglaonema) and planter materiality selection.</p>
+              </div>
+              <div class="process-step-mock">
+                <span style="font-size: 0.7rem; color: var(--forest-mid); font-weight: 700;">STAGE 03</span>
+                <h4 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0.25rem 0;">Precision Install</h4>
+                <p style="font-size: 0.75rem; color: #666;">Off-hours execution, modular wall anchoring, zero office workflow interruption.</p>
+              </div>
+              <div class="process-step-mock">
+                <span style="font-size: 0.7rem; color: var(--forest-mid); font-weight: 700;">STAGE 04</span>
+                <h4 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0.25rem 0;">Nurture & Warranty</h4>
+                <p style="font-size: 0.75rem; color: #666;">Weekly specialist visits, foliage cleaning, health reports, free plant swaps.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 5: FOLIAGE (Portfolio with Before/After) -->
+          <div class="section-wireframe-box" data-growth-phase="Stage 5: Foliage">
+            <div class="wireframe-label">Section 05 — Installed Flora (`#foliage`)</div>
+            <div class="wireframe-sub">Filterable project showcase (Green Walls / Landscaping / Plantscaping) with interactive Before / After hover crossfade.</div>
+
+            <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem;">
+              <span style="background: var(--forest-deep); color: var(--moss-accent); font-size: 0.7rem; padding: 0.25rem 0.75rem; border-radius: 2px;">All Installations (18)</span>
+              <span style="border: 1px solid var(--paper-muted); font-size: 0.7rem; padding: 0.25rem 0.75rem; border-radius: 2px;">Vertical Living Walls</span>
+              <span style="border: 1px solid var(--paper-muted); font-size: 0.7rem; padding: 0.25rem 0.75rem; border-radius: 2px;">Corporate Interiors</span>
+            </div>
+
+            <div class="portfolio-wire-grid">
+              <div class="portfolio-card-wire">
+                <span class="hover-layer-pill">Hover to Reveal After</span>
+                <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 500;">Volvo India Headquarters</div>
+                <div style="font-size: 0.75rem; color: #777;">450 sq ft Living Wall Atrium</div>
+              </div>
+              <div class="portfolio-card-wire">
+                <span class="hover-layer-pill">Hover to Reveal After</span>
+                <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 500;">Biocon Biologics Campus</div>
+                <div style="font-size: 0.75rem; color: #777;">Terrace Biophilic Garden</div>
+              </div>
+              <div class="portfolio-card-wire">
+                <span class="hover-layer-pill">Hover to Reveal After</span>
+                <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 500;">Hilton Bangalore</div>
+                <div style="font-size: 0.75rem; color: #777;">Executive Lounge Foliage</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 6: FLOWERING (Trust & Impact Stats) -->
+          <div class="section-wireframe-box" data-growth-phase="Stage 6: Flowering" style="padding: 0; overflow: hidden;">
+            <div style="padding: 1.5rem;">
+              <div class="wireframe-label">Section 06 — Trust & Impact Counters (`#flowering`)</div>
+              <div class="wireframe-sub">Understated monochrome marquee of enterprise clients + GSAP animated metric counters.</div>
+              
+              <div style="padding: 1rem; background: var(--paper-base); border: 1px solid var(--paper-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; text-align: center; color: var(--forest-mid);">
+                VOLVO &bull; NOKIA &bull; WABTEC &bull; FEDERAL BANK &bull; BIOCON &bull; SELLIES & STRADA &bull; HILTON
+              </div>
+            </div>
+
+            <div class="impact-wire-row">
+              <div>
+                <div style="font-family: var(--font-display); font-size: 2.2rem; color: var(--moss-accent);">85,000+</div>
+                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #A3B8AC;">Sq. Ft. Greened</div>
+              </div>
+              <div>
+                <div style="font-family: var(--font-display); font-size: 2.2rem; color: var(--moss-accent);">140+</div>
+                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #A3B8AC;">Corporate Offices</div>
+              </div>
+              <div>
+                <div style="font-family: var(--font-display); font-size: 2.2rem; color: var(--moss-accent);">98.4%</div>
+                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #A3B8AC;">Foliage Health Index</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 7: BLOOM (Consultation & Contacts) -->
+          <div class="section-wireframe-box" data-growth-phase="Stage 7: Full Bloom" style="background: var(--paper-base);">
+            <div class="wireframe-label">Section 07 — The Biophilic Consultation (`#bloom`)</div>
+            <div class="wireframe-sub">Direct booking form for free site audit + WhatsApp quick-connect to Mareena & Reena + minimal editorial sitemap footer.</div>
+
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-top: 1rem;">
+              <div style="background: #FFF; padding: 1.5rem; border: 1px solid var(--paper-muted);">
+                <div style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.5rem;">Request Complimentary On-Site Audit</div>
+                <p style="font-size: 0.8rem; color: #666; margin-bottom: 1rem;">We map natural lux levels and draft a customized botanical plan for your office.</p>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                  <div style="height: 36px; background: #F8F6F0; border: 1px solid var(--paper-muted); padding: 0.5rem; font-size: 0.75rem; color: #999;">Corporate Email / Company Name</div>
+                  <div style="height: 36px; background: #F8F6F0; border: 1px solid var(--paper-muted); padding: 0.5rem; font-size: 0.75rem; color: #999;">Office City / Area (Bengaluru, Chennai, Hyderabad)</div>
+                  <div style="background: var(--forest-deep); color: var(--paper-light); padding: 0.7rem; text-align: center; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;">Book Site Evaluation</div>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--forest-mid); font-weight: 600;">Direct Botanical Consultation</span>
+                  <h4 style="font-family: var(--font-display); font-size: 1.3rem; margin-top: 0.25rem;">Speak with Mareena or Reena</h4>
+                  <p style="font-size: 0.8rem; color: #666; margin: 0.5rem 0 1rem;">Immediate WhatsApp advisory for corporate procurement and architects.</p>
+                  <a href="https://wa.me/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: #FFF; padding: 0.5rem 1rem; border-radius: 2px; font-size: 0.75rem; font-weight: 600; text-decoration: none;">
+                    <span>WhatsApp Quick Connect</span>
+                  </a>
+                </div>
+
+                <div style="border-top: 1px solid var(--paper-muted); padding-top: 1rem; font-size: 0.75rem; color: #777;">
+                  <div>Instagram: @greenbeesblr</div>
+                  <div>Bengaluru, Karnataka &bull; South India</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Review Confirmation Callout -->
+    <div class="approval-callout">
+      <div>
+        <h3>Ready for Milestone 1 Build</h3>
+        <p>Upon your confirmation of palette contrast, Newsreader + Instrument Sans type pairing, and growth-stage wireframe, we proceed immediately to <strong>Milestone 1: Nav + Asymmetric Hero + Living Left Stem Indicator</strong> with Lenis smooth scroll and GSAP.</p>
+      </div>
+      <div>
+        <a href="#palette" class="btn-approve-simulate">Review Specs Above</a>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

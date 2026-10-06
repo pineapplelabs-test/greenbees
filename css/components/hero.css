@@ -1,0 +1,351 @@
+/* ==========================================================================
+   GREENBEES STUDIO — HERO SECTION (#1A472E CANVAS)
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  padding-top: calc(var(--header-height) + var(--space-xl));
+  padding-bottom: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--page-bg);
+  overflow: hidden;
+}
+
+/* Growth Badge */
+.growth-stage-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.growth-seed-tag {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  color: var(--moss-accent);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.growth-seed-tag .seed-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--moss-accent);
+  box-shadow: 0 0 8px rgba(169, 201, 66, 0.6);
+}
+
+.growth-seed-desc {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  font-weight: 500;
+}
+
+/* Asymmetric Hero Grid */
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--space-2xl);
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+/* Left Column: Welcoming Headline & Copy */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-main);
+  margin-bottom: var(--space-md);
+  max-width: 17ch;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss-accent);
+}
+
+.hero-lead-text {
+  font-family: var(--font-body);
+  font-size: var(--text-lead);
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin-bottom: var(--space-lg);
+  max-width: 48ch;
+}
+
+/* Warm Action Bar */
+.hero-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xl);
+}
+
+/* Primary Action: Moss Accent on Emerald */
+.hero-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.9rem 1.8rem;
+  background-color: var(--moss-accent);
+  color: var(--forest-dark);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: background-color var(--duration-fast),
+              transform var(--duration-fast),
+              box-shadow var(--duration-fast);
+}
+
+.hero-primary-btn:hover {
+  background-color: var(--moss-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(169, 201, 66, 0.35);
+}
+
+.hero-primary-btn .btn-arrow-icon {
+  width: 16px;
+  height: 16px;
+  stroke: var(--forest-dark);
+  transition: transform var(--duration-fast);
+}
+
+.hero-primary-btn:hover .btn-arrow-icon {
+  transform: translateX(3px);
+}
+
+/* Frosted Glass WhatsApp Direct Button */
+.hero-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.3rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  text-decoration: none;
+  transition: all var(--duration-fast);
+}
+
+.hero-whatsapp-btn:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.hero-whatsapp-btn svg {
+  color: #25D366;
+}
+
+/* Founder Note (Human & Welcoming) */
+.hero-founder-note {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--paper-muted);
+  width: 100%;
+  max-width: 520px;
+}
+
+.founder-avatar-group {
+  display: flex;
+}
+
+.founder-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #0F2E1D;
+  color: var(--moss-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 2px solid var(--page-bg);
+}
+
+.founder-avatar:last-child {
+  margin-left: -9px;
+  background-color: #0A1E13;
+}
+
+.founder-note-text {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.founder-note-text strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Right Column: Real Biophilic Photography Frame */
+.hero-photo-cluster {
+  position: relative;
+  width: 100%;
+}
+
+.photo-main-frame {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.45);
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  background-color: #0F2E1D;
+}
+
+.photo-main-frame img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s var(--ease-warm);
+}
+
+.hero-photo-cluster:hover .photo-main-frame img {
+  transform: scale(1.03);
+}
+
+/* Floating Glass Detail Sub-card */
+.photo-sub-card {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  background-color: rgba(10, 30, 19, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-lg);
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  max-width: 270px;
+  z-index: 6;
+}
+
+.photo-sub-card img {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.sub-card-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-card-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.sub-card-caption {
+  font-size: 0.74rem;
+  color: var(--moss-accent);
+  margin-top: 2px;
+}
+
+/* Client Trust Band */
+.hero-trust-band {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--paper-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 5;
+}
+
+.trust-band-label {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  font-weight: 500;
+}
+
+.trust-band-logos {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.trust-brand-item {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  transition: color var(--duration-fast);
+}
+
+.trust-brand-item:hover {
+  color: var(--text-main);
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .photo-main-frame img {
+    height: 320px;
+  }
+
+  .photo-sub-card {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin-top: var(--space-sm);
+  }
+
+  .hero-trust-band {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

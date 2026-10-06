@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100%" height="100%" fill="none">
+  <!-- Bee Head & Antennae -->
+  <path d="M78 36 C78 28 84 26 87 24 C87 28 83 31 81 33" stroke="#22231F" stroke-width="2.5" stroke-linecap="round"/>
+  <ellipse cx="73" cy="46" rx="11" ry="9" fill="#22231F" transform="rotate(-15 73 46)"/>
+  
+  <!-- Leaf Wing (Top Green) -->
+  <path d="M26 31 C22 55 45 68 58 64 C64 54 58 28 26 31 Z" fill="#769821"/>
+  <!-- Leaf central vein -->
+  <path d="M26 31 C40 45 52 56 58 64" stroke="#F5F2EB" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Abdomen Segments (Alternating Charcoal & Leaf Green) -->
+  <!-- Segment 1: Charcoal -->
+  <path d="M26 64 C24 75 32 82 45 81 C54 78 57 70 54 62 C42 66 32 64 26 64 Z" fill="#22231F"/>
+  <!-- Segment 2: Green -->
+  <path d="M24 80 C26 91 35 98 47 96 C53 93 54 86 52 79 C42 82 30 81 24 80 Z" fill="#769821"/>
+  <!-- Segment 3: Charcoal -->
+  <path d="M27 95 C31 106 40 110 48 108 C51 105 51 98 48 94 C38 97 31 96 27 95 Z" fill="#22231F"/>
+  <!-- Stinger: Green tip -->
+  <path d="M34 108 C36 115 37 118 38 120 C40 117 43 113 46 107 C41 109 37 109 34 108 Z" fill="#769821"/>
+</svg>

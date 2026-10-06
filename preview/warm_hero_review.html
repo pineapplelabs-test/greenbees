@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greenbees — Warm & Approachable Direction Review</title>
+
+  <!-- Google Fonts for the 3 Warm Pairings -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Option A: Fraunces + Plus Jakarta Sans -->
+  <!-- Option B: Lora + DM Sans -->
+  <!-- Option C: Source Serif 4 + Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --forest-dark: #0A1E13;
+      --forest-deep: #0F2E1D;
+      --forest-mid: #1A472E;
+      --paper-light: #FBF8F2;
+      --paper-base: #F4EFE6;
+      --paper-muted: #E8E0D2;
+      --paper-warm: #EFE8DA;
+      --moss-accent: #A9C942;
+      --moss-glow: #BFE353;
+      
+      --font-option-a-head: 'Fraunces', serif;
+      --font-option-a-body: 'Plus Jakarta Sans', sans-serif;
+
+      --font-option-b-head: 'Lora', serif;
+      --font-option-b-body: 'DM Sans', sans-serif;
+
+      --font-option-c-head: 'Source Serif 4', serif;
+      --font-option-c-body: 'Outfit', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--paper-base);
+      color: var(--forest-deep);
+      font-family: var(--font-option-a-body);
+      line-height: 1.6;
+      position: relative;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* Top Navigation bar for review */
+    .review-top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244, 239, 230, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--paper-muted);
+      padding: 1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .pill-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #E5DFC9;
+      color: var(--forest-mid);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .review-nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .review-nav-links a {
+      color: var(--forest-mid);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .review-nav-links a:hover {
+      color: var(--forest-dark);
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 6rem;
+    }
+
+    /* Section intro */
+    .intro-box {
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid var(--paper-muted);
+      padding-bottom: 2rem;
+    }
+
+    .intro-box h1 {
+      font-family: var(--font-option-a-head);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--forest-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .intro-box p {
+      font-size: 1.05rem;
+      color: #4A5F52;
+      max-width: 780px;
+      line-height: 1.6;
+    }
+
+    .card-block {
+      background: #FFFFFF;
+      border: 1px solid var(--paper-muted);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 4px 20px rgba(15, 46, 29, 0.03);
+    }
+
+    .card-title-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--paper-warm);
+      padding-bottom: 1rem;
+    }
+
+    .card-title-bar h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--forest-dark);
+    }
+
+    /* ====================================================================
+       PART 1: 3 WARM TYPOGRAPHY PAIRINGS SPECIMEN
+       ==================================================================== */
+    .pairings-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .pair-option-card {
+      border: 1.5px solid var(--paper-muted);
+      background: var(--paper-light);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .pair-option-card:hover {
+      border-color: var(--forest-mid);
+      box-shadow: 0 6px 20px rgba(15, 46, 29, 0.05);
+    }
+
+    .pair-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.25rem;
+    }
+
+    .pair-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--forest-mid);
+      background: #E7DFCE;
+      padding: 0.25rem 0.6rem;
+      border-radius: 3px;
+    }
+
+    .pair-names {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #687D70;
+    }
+
+    /* Pair A Samples */
+    .sample-a-head {
+      font-family: var(--font-option-a-head);
+      font-size: clamp(2rem, 3.4vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--forest-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .sample-a-body {
+      font-family: var(--font-option-a-body);
+      font-size: 1rem;
+      color: #3C5043;
+      line-height: 1.6;
+      max-width: 65ch;
+    }
+
+    /* Pair B Samples */
+    .sample-b-head {
+      font-family: var(--font-option-b-head);
+      font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--forest-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .sample-b-body {
+      font-family: var(--font-option-b-body);
+      font-size: 1rem;
+      color: #3C5043;
+      line-height: 1.6;
+      max-width: 65ch;
+    }
+
+    /* Pair C Samples */
+    .sample-c-head {
+      font-family: var(--font-option-c-head);
+      font-size: clamp(1.95rem, 3.2vw, 2.65rem);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--forest-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .sample-c-body {
+      font-family: var(--font-option-c-body);
+      font-size: 1rem;
+      color: #3C5043;
+      line-height: 1.6;
+      max-width: 65ch;
+    }
+
+    .pair-verdict {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--paper-warm);
+      font-size: 0.85rem;
+      color: #556B5D;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ====================================================================
+       PART 2: UPDATED WARM & APPROACHABLE HERO PROTOTYPE
+       ==================================================================== */
+    .hero-prototype-wrapper {
+      border: 1px solid var(--paper-muted);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--paper-base);
+    }
+
+    .prototype-bar {
+      background: #EAE3D4;
+      padding: 0.75rem 1.5rem;
+      border-bottom: 1px solid var(--paper-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #5D7265;
+      font-weight: 600;
+    }
+
+    .hero-demo {
+      padding: 4rem 3rem 4rem;
+      background: var(--paper-base);
+      position: relative;
+    }
+
+    .hero-demo-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    /* Warm Hero Copy (Option A applied as live test) */
+    .warm-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #EBE4D5;
+      border: 1px solid #DFD6C3;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      color: var(--forest-mid);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .warm-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--moss-accent);
+    }
+
+    .warm-hero-title {
+      font-family: var(--font-option-a-head);
+      font-size: clamp(2.6rem, 4.4vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--forest-dark);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.015em;
+    }
+
+    .warm-hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--forest-mid);
+    }
+
+    .warm-hero-lead {
+      font-family: var(--font-option-a-body);
+      font-size: 1.12rem;
+      line-height: 1.65;
+      color: #42584A;
+      margin-bottom: 2rem;
+      max-width: 48ch;
+    }
+
+    .warm-hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .warm-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--forest-deep);
+      color: var(--paper-light);
+      font-family: var(--font-option-a-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.85rem 1.6rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .warm-btn-primary:hover {
+      background: var(--forest-dark);
+      transform: translateY(-1px);
+    }
+
+    .warm-btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--forest-deep);
+      font-family: var(--font-option-a-body);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      border: 1px solid #D6CCB8;
+      background: #FAF6EE;
+    }
+
+    .warm-btn-whatsapp:hover {
+      border-color: var(--forest-mid);
+      background: #FFF;
+    }
+
+    /* Founder Note callout */
+    .founder-note {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--paper-muted);
+    }
+
+    .founder-avatars {
+      display: flex;
+    }
+
+    .founder-badge-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--forest-mid);
+      color: var(--paper-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border: 2px solid var(--paper-base);
+    }
+
+    .founder-badge-circle:last-child {
+      margin-left: -8px;
+      background: #2C6544;
+    }
+
+    .founder-text {
+      font-size: 0.85rem;
+      color: #556B5D;
+    }
+
+    .founder-text strong {
+      color: var(--forest-dark);
+      font-weight: 600;
+    }
+
+    /* Right Column: Real Biophilic Photography Composition */
+    .hero-photo-cluster {
+      position: relative;
+    }
+
+    .photo-main-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(15, 46, 29, 0.08);
+      border: 4px solid #FFFFFF;
+      background: #E8E0D2;
+    }
+
+    .photo-main-frame img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .photo-main-frame:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Overlapping Sub-card with real detail shot */
+    .photo-sub-card {
+      position: absolute;
+      bottom: -24px;
+      left: -24px;
+      background: #FFFFFF;
+      border-radius: 10px;
+      padding: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      box-shadow: 0 10px 28px rgba(15, 46, 29, 0.09);
+      border: 1px solid var(--paper-muted);
+      max-width: 260px;
+    }
+
+    .photo-sub-card img {
+      width: 58px;
+      height: 58px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .sub-card-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sub-card-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--forest-dark);
+    }
+
+    .sub-card-caption {
+      font-size: 0.72rem;
+      color: #6C8173;
+    }
+
+    /* Client Bar (Warm, understated, approachable) */
+    .hero-clients-band {
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--paper-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .band-label {
+      font-size: 0.8rem;
+      color: #6E8376;
+      font-weight: 500;
+    }
+
+    .band-names {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .band-client {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #4D6455;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 900px) {
+      .hero-demo-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .photo-sub-card {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="review-top-bar">
+    <div class="brand-mark">
+      <span class="pill-badge">Design Revision</span>
+      <strong>GREENBEES STUDIO</strong>
+    </div>
+    <ul class="review-nav-links">
+      <li><a href="#typography">1. Warm Typography Options</a></li>
+      <li><a href="#hero-preview">2. Warm Approachable Hero</a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    
+    <!-- Intro -->
+    <div class="intro-box">
+      <h1>Warm &amp; Approachable Direction</h1>
+      <p>Revised direction per your feedback: eliminated the cold, austere high-fashion aesthetic. Replacing Newsreader + Instrument Sans with 3 warm, approachable pairings. Replaced line-art wireframe with real biophilic photography, friendlier copy, and natural human studio tone.</p>
+    </div>
+
+    <!-- ================================================================
+         PART 1: 3 WARM TYPOGRAPHY PAIRINGS SPECIMEN
+         ================================================================ -->
+    <section id="typography" class="card-block">
+      <div class="card-title-bar">
+        <h2>Part 1: Three Warm &amp; Approachable Typography Pairings</h2>
+        <span class="pill-badge">Choose 1 for Final Build</span>
+      </div>
+
+      <div class="pairings-grid">
+        
+        <!-- OPTION A: FRAUNCES + PLUS JAKARTA SANS -->
+        <div class="pair-option-card">
+          <div class="pair-header">
+            <span class="pair-tag">Option A (Recommended: Warm Organic &amp; Soft Curves)</span>
+            <span class="pair-names">Fraunces (Display) + Plus Jakarta Sans (Body)</span>
+          </div>
+
+          <h3 class="sample-a-head">
+            Bringing living, breathing greenery into Bengaluru workplaces.
+          </h3>
+          <p class="sample-a-body">
+            Greenbees was started with a simple belief: offices feel better when they’re alive with plants. Mareena and Reena design custom green walls and desk planters, delivered and lovingly cared for every week so your team never has to worry about a drooping leaf.
+          </p>
+          <div class="pair-verdict">
+            <span>🌿 <strong>Character:</strong> Friendly humanist serif with soft, rounded serifs and generous warmth. Pairs with friendly, readable geometric sans. Feels like handcrafted botanical pottery and living leaves.</span>
+          </div>
+        </div>
+
+        <!-- OPTION B: LORA + DM SANS -->
+        <div class="pair-option-card">
+          <div class="pair-header">
+            <span class="pair-tag">Option B (Crafted Literary &amp; Human Touch)</span>
+            <span class="pair-names">Lora (Display) + DM Sans (Body)</span>
+          </div>
+
+          <h3 class="sample-b-head">
+            Thoughtfully planted spaces, made for people to thrive.
+          </h3>
+          <p class="sample-b-body">
+            Greenbees was started with a simple belief: offices feel better when they’re alive with plants. Mareena and Reena design custom green walls and desk planters, delivered and lovingly cared for every week so your team never has to worry about a drooping leaf.
+          </p>
+          <div class="pair-verdict">
+            <span>📖 <strong>Character:</strong> Classic calligraphic humanist curves, gentle contrast, warm and reassuring. Pairs with DM Sans for clean, approachable everyday reading.</span>
+          </div>
+        </div>
+
+        <!-- OPTION C: SOURCE SERIF 4 + OUTFIT -->
+        <div class="pair-option-card">
+          <div class="pair-header">
+            <span class="pair-tag">Option C (Friendly Botanical Heritage)</span>
+            <span class="pair-names">Source Serif 4 (Display) + Outfit (Body)</span>
+          </div>
+
+          <h3 class="sample-c-head">
+            Natural greenery, tailored for your team’s daily rhythm.
+          </h3>
+          <p class="sample-c-body">
+            Greenbees was started with a simple belief: offices feel better when they’re alive with plants. Mareena and Reena design custom green walls and desk planters, delivered and lovingly cared for every week so your team never has to worry about a drooping leaf.
+          </p>
+          <div class="pair-verdict">
+            <span>🍃 <strong>Character:</strong> Sturdy, welcoming editorial book serif with open proportions. Outfit adds a friendly, modern lifestyle tone.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         PART 2: UPDATED WARM HERO PROTOTYPE
+         ================================================================ -->
+    <section id="hero-preview" class="card-block" style="padding: 0; overflow: hidden;">
+      <div class="prototype-bar">
+        <span>Part 2: Updated Warm &amp; Approachable Hero Preview (Showing Option A + Real Photography)</span>
+        <span>Local Studio Tone &bull; Mareena &amp; Reena</span>
+      </div>
+
+      <div class="hero-demo">
+        <div class="hero-demo-grid">
+          
+          <!-- Left Warm Copy -->
+          <div>
+            <div class="warm-badge">
+              <span class="warm-badge-dot"></span>
+              <span>Bengaluru Corporate Plantscaping Studio</span>
+            </div>
+
+            <h2 class="warm-hero-title">
+              We bring plants to work, and keep them <em>thriving.</em>
+            </h2>
+
+            <p class="warm-hero-lead">
+              From living vertical walls to desk-side greenery, we design, install, and weekly-care for office plants across Bengaluru. Honest botanical care, zero fuss for your team.
+            </p>
+
+            <div class="warm-hero-actions">
+              <a href="javascript:void(0)" class="warm-btn-primary">
+                <span>Book a Free Studio Visit</span>
+                <span style="font-size: 1.1rem; line-height: 1;">&rarr;</span>
+              </a>
+
+              <a href="https://wa.me/" target="_blank" class="warm-btn-whatsapp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color: #25D366;">
+                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                </svg>
+                <span>Chat with Mareena &amp; Reena</span>
+              </a>
+            </div>
+
+            <!-- Founder Note -->
+            <div class="founder-note">
+              <div class="founder-avatars">
+                <div class="founder-badge-circle" title="Mareena">M</div>
+                <div class="founder-badge-circle" title="Reena">R</div>
+              </div>
+              <div class="founder-text">
+                <strong>Founders on site:</strong> Every office layout is personally mapped by Mareena or Reena.
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Real Photography Composition -->
+          <div class="hero-photo-cluster">
+            <div class="photo-main-frame">
+              <!-- Real curated biophilic indoor office photography with warm natural light -->
+              <img src="https://images.unsplash.com/photo-1597218868981-1b68e15f0063?auto=format&fit=crop&w=1000&q=85" alt="Real living green wall installed in sunlit corporate office atrium">
+            </div>
+
+            <!-- Floating warm detail sub-card -->
+            <div class="photo-sub-card">
+              <img src="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=200&q=80" alt="Lush monstera plant care detail">
+              <div class="sub-card-text">
+                <span class="sub-card-title">Weekly Plant Care</span>
+                <span class="sub-card-caption">Guaranteed leaf replacement</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Clients Trust Band -->
+        <div class="hero-clients-band">
+          <div class="band-label">Trusted by teams across South India:</div>
+          <div class="band-names">
+            <span class="band-client">Volvo</span>
+            <span class="band-client">Nokia</span>
+            <span class="band-client">Wabtec</span>
+            <span class="band-client">Federal Bank</span>
+            <span class="band-client">Biocon</span>
+            <span class="band-client">Hilton</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

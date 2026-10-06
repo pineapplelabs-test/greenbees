@@ -1,0 +1,182 @@
+/* ==========================================================================
+   GREENBEES STUDIO — FLOATING GLASS NAVBAR (CENTER DOCKED)
+   Frosted Glass Capsule in the middle of viewport
+   ========================================================================== */
+
+.site-nav {
+  position: fixed;
+  top: 20px;
+  left: calc(50% + (var(--stem-rail-width) / 2));
+  transform: translateX(-50%);
+  width: auto;
+  max-width: calc(100vw - var(--stem-rail-width) - 40px);
+  height: auto;
+  z-index: 100;
+  pointer-events: none; /* Allows clicks around the pill */
+}
+
+/* The Glass Capsule */
+.nav-container {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: 0.5rem 0.6rem 0.5rem 1.25rem;
+  background: rgba(10, 32, 20, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35),
+              inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  transition: background-color 0.3s var(--ease-warm),
+              border-color 0.3s var(--ease-warm),
+              box-shadow 0.3s var(--ease-warm),
+              transform 0.3s var(--ease-warm);
+}
+
+.site-nav.is-scrolled .nav-container {
+  background: rgba(8, 26, 16, 0.85);
+  border-color: rgba(169, 201, 66, 0.3);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45),
+              inset 0 1px 1px rgba(255, 255, 255, 0.22);
+}
+
+/* Brand Glyph & Name */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-main);
+  padding-right: 0.5rem;
+}
+
+.brand-glyph {
+  width: 20px;
+  height: 20px;
+  color: var(--moss-accent);
+  transition: transform var(--duration-normal);
+}
+
+.nav-brand:hover .brand-glyph {
+  transform: rotate(18deg) scale(1.1);
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
+}
+
+/* Nav Menu Links */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  position: relative;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast), background-color var(--duration-fast);
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-link:active {
+  color: var(--moss-accent);
+}
+
+/* Right Actions Inside the Glass Pill */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.nav-coords {
+  display: none; /* Kept clean in pill */
+}
+
+/* Action CTA inside pill */
+.nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--moss-accent);
+  color: var(--forest-dark);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(169, 201, 66, 0.25);
+  transition: background-color var(--duration-fast),
+              transform var(--duration-fast),
+              box-shadow var(--duration-fast);
+}
+
+.nav-cta-btn:hover {
+  background: var(--moss-glow);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(169, 201, 66, 0.4);
+}
+
+.cta-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--forest-dark);
+  display: inline-block;
+}
+
+/* Mobile Toggle */
+.mobile-nav-toggle {
+  display: none;
+  width: 28px;
+  height: 28px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.mobile-nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: var(--text-main);
+  border-radius: 1px;
+}
+
+@media (max-width: 900px) {
+  .site-nav {
+    left: 50%;
+    width: calc(100% - 32px);
+    max-width: 480px;
+  }
+  
+  .nav-container {
+    justify-content: space-between;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+}
